@@ -1,0 +1,87 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://st4.depositphotos.com/1302980/26678/v/600/depositphotos_266783454-stock-video-city-map-with-gps-pins.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.menu{
+    padding: 2%;
+    background-color: white;
+}
+
+button{
+    background-color: white;
+    border: none;
+}
+
+.search_destination {
+    background-color: white;
+    margin: auto;
+    width: 46%;
+    padding:5px;
+    border-radius: 20px;
+    border-color: rgb(29, 155, 240);
+    border-width: 2px;
+    border-style: solid;
+}
+
+.search_destination .input_textbox{
+    border: none;
+    
+}
+
+.search_destination .search_button:active{
+    transform: translate(0px, 2px);
+    color: blue;
+}
+
+.duration{
+    position: absolute;
+    bottom: 0%;
+    width: 50%;
+    left: 24%;
+    padding: 2%;
+}
+
+.duration .parking_duration{
+    padding: 1%;
+    margin: auto;
+    margin-bottom: 4%;
+    background-color: white;
+    width: 60%;
+    border-radius:20px;
+    border-color: rgb(29, 155, 240);
+    border-style: solid;
+    text-align: center;
+}
+
+.duration .counter{
+    background-color: white;
+    margin-left: 8.5%;
+    width: 70%;
+    padding: 5%;
+    border-radius: 20px;
+    border-color: rgb(29, 155, 240);
+    border-width: 2px;
+    border-style: solid;
+}
+
+.duration .counter .time_hour{
+    margin-bottom: 3%;
+    padding: 3px;
+    width:50%;
+    border-radius: 10px;
+}
+
+.duration .counter .time_minute{
+    padding: 3px;
+    width:50%;
+    border-radius: 10px;
+}
+
+.duration .counter .time_unit{
+    margin-left: 8%;
+}
