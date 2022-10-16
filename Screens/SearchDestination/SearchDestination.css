@@ -15,6 +15,7 @@ html, body {
 button{
     background-color: white;
     border: none;
+    cursor: pointer;
 }
 
 .search_destination {
