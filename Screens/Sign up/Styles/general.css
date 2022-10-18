@@ -144,6 +144,7 @@ body {
 
 .underline{
     cursor: pointer;
+    color: rgb(29, 155, 240);
 }
 
 .underline:hover{
