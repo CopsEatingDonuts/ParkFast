@@ -6,11 +6,15 @@ var exec = require('child_process').exec;
 // token value is stored in the variable 'new_token'
 // new_token generated should be placed in the variable 'command'
 
+const {new_token }=  require('./generate_token.js');
+//var new_token = "ttdMAe3s36f54fm2Nuq-4f4s@r-cd5aKaaexzdV825-XUdbe-7v--dbdk85h4eNed-44bjJaXbj842PrW4-f46eaYw+VMdN8VyTf";
 /*
-var new_token = "aTpPdeZzvG42xGca-dbqDDhQ0abkJtg500ur9u7eAaYBfh9eTbG4hmnb24Gedc-dqeRz-mStq8GVQX4faaz8GebgS-ff@5V9wZ4T";
 var get_token = 'curl "https://www.ura.gov.sg/uraDataService/insertNewToken.action" -H "AccessKey: dd528ffa-bad4-4e39-baeb-dfb9804afea2"'
 child = exec(get_token, function(error, stdout, stderr){
 
+    new_token = JSON.parse(stdout).Result;
+    Atomics.wait(new_token, 0, 0);
+    console.log(new_token);
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
     
@@ -22,6 +26,7 @@ child = exec(get_token, function(error, stdout, stderr){
 });
 */
 
+var dictionary;
 var command = 'curl "https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability" -H "AccessKey: dd528ffa-bad4-4e39-baeb-dfb9804afea2" -H "Token: '+new_token+'"';
 child = exec(command, function(error, stdout, stderr){
 
@@ -40,7 +45,7 @@ child = exec(command, function(error, stdout, stderr){
 
     */
 
-    console.log(dictionary);
+    //console.log(dictionary);
     
     if(error !== null)
     {
@@ -49,7 +54,15 @@ child = exec(command, function(error, stdout, stderr){
     
 });
 
+function printMe() {
+    console.log('hello test');
+}
 
-  
 var msg = 'Hello World';
 console.log(msg);
+
+function printDictionary() {
+    console.log(dictionary);
+}
+
+setTimeout(printDictionary, 1000);
