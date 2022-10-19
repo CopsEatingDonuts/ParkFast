@@ -9,18 +9,20 @@
     <body>
         <p class = "Headings">Available Carparks</p>
         <div class= "location">
-            <span class="material-symbols-sharp">location_on</span>
-            <span id = "result"></span>
+            <span class="material-symbols-sharp" id = "target_location">location_on</span>
+            <span id = "result_location"></span>
         </div>
         
         <div class="button_label">
             <button id = "button1" onclick="setColor('button1','button2')">Nearest</button>
             <button id = "button2" onclick="setColor('button2','button1')">Price</button>
         </div>
-        <div>
-            <span class="material-symbols-sharp">favorite</span>
-            <span class="material-symbols-outlined">assistant_navigation</span>
-        </div>
+        <form action = "DisplayCarparkAvailability.html">
+            <button class="material-symbols-sharp" id = "favorite">favorite</button>
+            <button class="material-symbols-outlined" 
+            onclick="passParkingLot()">assistant_navigation    
+            </button>
+        </form>
         <script src="DisplayCarparks.js"></script>
     </body>
 </html>

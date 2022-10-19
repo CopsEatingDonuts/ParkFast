@@ -45,9 +45,10 @@ button{
     bottom:120px;
     right:25%;
     left:50%;
-    margin-left:-76.25px;
+    margin-left:-79.5px;
     width: 150px;
     height: auto;
+    padding: 3px;
     background-color: white;
     border-radius:20px;
     border-color: rgb(29, 155, 240);
@@ -63,6 +64,7 @@ button{
     right:25%;
     left:50%;
     width: 170px;
+    height: auto;
     margin-left:-106px;
     background-color: white;
     padding: 20px;

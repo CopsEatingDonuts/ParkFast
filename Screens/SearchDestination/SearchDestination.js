@@ -1,8 +1,9 @@
 function passDestination(){
     var dest = document.getElementById("dest").value;
-    localStorage.setItem("textvalue", dest);
+    sessionStorage.setItem("textvalue", dest);
     return;
 }
+
 var searchInput = "dest";
 
 $(document).ready(function () {
