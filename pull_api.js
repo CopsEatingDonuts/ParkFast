@@ -28,8 +28,9 @@ child = exec(get_token, function(error, stdout, stderr){
 
 var dictionary;
 var command = 'curl "https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability" -H "AccessKey: dd528ffa-bad4-4e39-baeb-dfb9804afea2" -H "Token: '+new_token+'"';
-child = exec(command, function(error, stdout, stderr){
+exec(command, function(error, stdout, stderr){
 
+    //console.log(stdout);
     dictionary = JSON.parse(stdout);
     /*
     // stdout is the string of the carpark details(carparkNo, geometries, coordinates, lotsAvaiable)
@@ -61,8 +62,14 @@ function printMe() {
 var msg = 'Hello World';
 console.log(msg);
 
+/*
 function printDictionary() {
     console.log(dictionary);
 }
+*/
 
-setTimeout(printDictionary, 1000);
+/* javascript runs asynchrously. I'm setting a timeout of 1second to give time for the exec code above to run and update
+the variable 'dicionary' before printing out dictionary
+*/
+
+setTimeout(function() {console.log(dictionary.Result[0].geometries)}, 1000);
