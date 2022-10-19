@@ -2,36 +2,13 @@ var http = require('http');
 var util = require('util');
 var exec = require('child_process').exec;
 
-// code below only needs to be used once a day to generate token
-// token value is stored in the variable 'new_token'
-// new_token generated should be placed in the variable 'command'
-
 const {new_token }=  require('./generate_token.js');
-//var new_token = "ttdMAe3s36f54fm2Nuq-4f4s@r-cd5aKaaexzdV825-XUdbe-7v--dbdk85h4eNed-44bjJaXbj842PrW4-f46eaYw+VMdN8VyTf";
-/*
-var get_token = 'curl "https://www.ura.gov.sg/uraDataService/insertNewToken.action" -H "AccessKey: dd528ffa-bad4-4e39-baeb-dfb9804afea2"'
-child = exec(get_token, function(error, stdout, stderr){
 
-    new_token = JSON.parse(stdout).Result;
-    Atomics.wait(new_token, 0, 0);
-    console.log(new_token);
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    
-    if(error !== null)
-    {
-        console.log('exec error: ' + error);
-    }
-    
-});
-*/
-
-var dictionary;
 var command = 'curl "https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability" -H "AccessKey: dd528ffa-bad4-4e39-baeb-dfb9804afea2" -H "Token: '+new_token+'"';
 exec(command, function(error, stdout, stderr){
 
-    //console.log(stdout);
-    dictionary = JSON.parse(stdout);
+    results = JSON.parse(stdout).Result;
+
     /*
     // stdout is the string of the carpark details(carparkNo, geometries, coordinates, lotsAvaiable)
     // cleaning stdout by removing front part of it
@@ -45,8 +22,6 @@ exec(command, function(error, stdout, stderr){
     dictionary = dictionary.split('},{');
 
     */
-
-    //console.log(dictionary);
     
     if(error !== null)
     {
@@ -55,21 +30,10 @@ exec(command, function(error, stdout, stderr){
     
 });
 
-function printMe() {
-    console.log('hello test');
-}
-
-var msg = 'Hello World';
-console.log(msg);
-
-/*
-function printDictionary() {
-    console.log(dictionary);
-}
-*/
-
 /* javascript runs asynchrously. I'm setting a timeout of 1second to give time for the exec code above to run and update
 the variable 'dicionary' before printing out dictionary
+
+next time probably wont use this setTimeout if we are splitting the files anyway
 */
 
-setTimeout(function() {console.log(dictionary.Result[0].geometries)}, 1000);
+setTimeout(function() {console.log(results[0].geometries)}, 2000);

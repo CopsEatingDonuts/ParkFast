@@ -171,4 +171,5 @@ var SVY21 = (function(){
 });
 
 var trying = new SVY21();
-console.log(trying.computeLatLon('33394.2043','32909.1642'));
+var wgs84_coords = trying.computeLatLon('33394.2043','32909.1642');
+console.log(wgs84_coords);
