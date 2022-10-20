@@ -60,7 +60,7 @@ function validateForm() {
       document.getElementById("usermessage").innerHTML = "";   
       return false;  
     } else {  
-      alert ("Your password created successfully");  
+      alert ("Your account has been created successfully");  
       window.open("http://127.0.0.1:5502/Screens/SearchDestination/SearchDestination.html", "_self");
     }
 }

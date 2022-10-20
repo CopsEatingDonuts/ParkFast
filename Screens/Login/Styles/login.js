@@ -16,7 +16,6 @@ function validateLogin(){
     }  
 
     else{
-        alert("Log in successful!");
         window.open("http://127.0.0.1:5502/Screens/SearchDestination/SearchDestination.html", "_self");
     }
 }
