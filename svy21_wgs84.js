@@ -164,13 +164,15 @@ this.calcM = function(lat, lon){
 
 });
 
-// the function below, computeLatLon uses N,E. coords from ura api is in E,N.
-/*
+// the function below, computeLatLon uses N,E. coords from ura api is in E,N. Therefore the function takes in y,x and uses them as x,y
 var trying = new SVY21();
-var wgs84_coords = trying.computeLatLon('32909.1642','33394.2043');
-console.log(wgs84_coords);
-*/
+svy21_to_wgs84 = (function(y_coords, x_coords) {
+  var wgs84_coords = trying.computeLatLon(x_coords,y_coords);
+  return wgs84_coords;
+})
+module.exports = svy21_to_wgs84;
 
+/*
 var http = require('http');
 var util = require('util');
 var exec = require('child_process').exec;
@@ -180,7 +182,6 @@ svy21_to_wgs84 = (function(x_coords, y_coords) {
 
     convert = JSON.parse(stdout);
     console.log(convert);
-    console.log(convert.latitude);
     
     if(error !== null)
     {
@@ -190,3 +191,7 @@ svy21_to_wgs84 = (function(x_coords, y_coords) {
   });
 });
 module.exports = svy21_to_wgs84;
+
+var coor = svy21_to_wgs84(32909.1642,33394.2043);
+setTimeout(function() {console.log("test"+coor)},2000);
+*/
