@@ -8,8 +8,10 @@ body {
 
 
 .Login-rectangle{
-    width:600px;
-    height:500px;
+    max-width:600px;
+    max-height:500px;
+    width:100%;
+    height:100%;
     background-color:white;
     position:absolute;
     top:50%;
@@ -37,7 +39,8 @@ body {
 
 .Username-bar,
 .Password-bar{
-    width: 500px;
+    max-width: 500px;
+    width:100%;
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 50px;
