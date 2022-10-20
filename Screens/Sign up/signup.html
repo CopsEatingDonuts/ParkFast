@@ -9,6 +9,7 @@
 
 
         <link rel = "stylesheet" href = "Styles/general.css">
+        <script src = "Styles/Signup.js"></script>
     </head>
     <body>
         <div class = "Signup-rectangle">
@@ -20,20 +21,22 @@
             <div class = "Signup-Credentials">
                 <div class = "username">
                     <p class = "username-header">New Username</p>
-                    <input class = "Username-bar" type = "text" placeholder = "Username">
-                    <button class = "User-availability"> Check if username is available</button>
+                    <input class = "Username-bar" type = "text" id = username placeholder = "Username">
+                    <span id = "usermessage" style = "margin-left:50px; color:red"> </span>
                 </div>
                 <div class="password">
                     <p class = "password-header">Password</p>
-                    <input type = "password" class = "Password-bar" type = "text" placeholder = "Password">
+                    <input type = "password" class = "Password-bar" value = "" placeholder = "Password" id = "pswd1">
+                    <span id = "message1" style = "margin-left:50px; color : red"> </span>
                     <p class = "Password-strength">Password must contain <span class="req1"> 1. at least 8 characters</span> <span class = "req2">2. a mix of upper and lower case letters</span></p>
                 </div>
                 <p class = "cpassword-header">Confirm Password</p>
-                <input type = "password" class = "CPassword-bar" type = "text" placeholder = "Confirm Password">
+                <input type = "password" class = "CPassword-bar" value = "" placeholder = "Confirm Password" id = "pswd2">
+                <span id = "message2" style = "margin-left:50px; color:red"> </span>
             </div>
             <div class="bottom-row">
                 <p class = "have-account">Already have an account? <a href = "http://127.0.0.1:5502/Screens/Login/login.html" target = "_self" class = "underline"> Log in.</a></p>
-                <button class = "account-creation"> Create Account</button>
+                <button class = "account-creation" type = submit onclick = "validateForm()">Create Account</button>
             </div>
         </div>
     </body>
