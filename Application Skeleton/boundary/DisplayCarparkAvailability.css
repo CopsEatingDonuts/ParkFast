@@ -1,0 +1,39 @@
+#map{
+    height: 220px;
+    width: 100%;
+}
+
+.lots_results{
+    position: absolute;
+    bottom: 45px;
+    width: 100%;
+}
+
+.lots_available_text{
+    width: 124px;
+    margin: auto;
+    font-size: 20px;
+}
+
+.lots_results .car,.heavy_vehicle{
+    background: rgb(29, 155, 220);
+}
+
+hr{
+    border-top: 2px solid rgb(29, 155, 220);
+    width: 100%;
+}
+
+.proceed{
+    position:absolute;
+    bottom:10px;
+    right:25%;
+    left:50%;
+    margin-left:-75px;
+    width:150px;
+    height: 30px;
+    background: blue;
+    font-weight: "bold";
+    color: white;
+    border-radius: 12px;
+}

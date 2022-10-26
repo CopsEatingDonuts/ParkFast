@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="DisplayCarparkAvailability.css">
+</head>
+
+<body>
+    <span class = "result" id = "result_carpark"></span>
+    <div id='map'></div>
+    <div class = "lots_results" >
+        <div class = "lots_available_text">
+            <label>Lots Available</label>
+        </div>
+        <div class = "car">
+            <label >Car</label>
+            <span id = "car_lots"></span>
+        </div>
+        <div class="motorcycle">
+            <label >Motorcycle</label>
+            <span id = "motorcycle_lots"></span>
+        </div>
+        <div class = "heavy_vehicle">
+            <label >Heavy Vehicle</label>
+            <span id = "heavy_vehicle_lots"></span>
+        </div>
+        <div class="handicap">
+            <label >Handicap</label>
+            <span id = "handicap_lots"></span>
+        </div>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+    </div>
+    <button class="proceed">Proceed</button>
+    <script src="DisplayCarparkAvailability.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places&callback=initMap" async defer>
+    </script>
+</body>

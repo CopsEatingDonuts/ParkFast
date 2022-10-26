@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Log in</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="login.css">
+    </head>
+    <body>
+        <div class = "Login-rectangle">
+            <div class = "LoginText">
+                <p class = "Login">
+                    Login To Your Account
+                </p>
+            </div>
+            <div class = "Login-Credentials">
+                <div class = "username">
+                    <p class = "username-header">Username</p>
+                    <input class = "Username-bar" value = "" placeholder = "Username" id = "username">
+                    <span id = "usermessage" style = "margin-left:50px; color:red"> </span>
+                </div>
+                <div class="password">
+                    <p class = "password-header">Password</p>
+                    <input type = password class = "Password-bar"  value = "" placeholder = "Password" id = "pswd">
+                    <span id = "message" style = "margin-left:50px; color : red"> </span>    
+                    <div class = "bottom-row">
+                        <p class = "no-account">Don't have an account? <a href = "http://127.0.0.1:5502/Screens/Sign%20up/signup.html" target = "_self" class = "signup">Sign up here.</a></p>
+                        <button class = "sign-in" id = "logInButton" type = "submit"> Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src = "login.js"></script>
+    <script type = "module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+        const firebaseConfig = {       
+        apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
+        authDomain: "parkfast-23bd8.firebaseapp.com",
+        databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "parkfast-23bd8",
+        storageBucket: "parkfast-23bd8.appspot.com",
+        messagingSenderId: "333155544674",
+        appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
+        measurementId: "G-5K5M61GXK1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        document.getElementById('logInButton').addEventListener('click', signIn);
+        function signIn(){
+            var pw = document.getElementById("pswd").value; 
+            var email = document.getElementById("username").value;
+
+            if(validateLogin(email, pw)){
+                signInWithEmailAndPassword(auth, email, pw)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                });
+            }
+        }
+    </script>
+</html>

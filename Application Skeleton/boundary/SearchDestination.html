@@ -1,0 +1,33 @@
+<!DOCTYPE><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"><!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="SearchDestination.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <div class="menu">
+        <button type="button"><i class="fa-solid fa-bars"></i></button>
+    </div>
+      
+    <br>
+    
+    <form class="search_destination" action = "DisplayCarparks.html">
+        <input class = "input_textbox" type = "text" id="dest" placeholder="Enter destination"/>
+        <button class = "search_button" type="submit" onclick="passDestination()" style="float: right;"><i class="fa fa-search"></i></button>
+    </form>
+    
+    <div class="parking_duration">
+        <label class="parking_duration_text">Parking duration</label>
+    </div>
+    
+    <div class = "counter">
+        <input  class = "time_hour" type = "number" placeholder="0">     
+        <label>hours</label>
+        <input  class = "time_minute" type = "number" placeholder="0"> 
+        <label>minutes</label>    
+    </div>
+      
+    <script src="SearchDestination.js"></script>  
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places" async defer>
+    </script>
+</html>
