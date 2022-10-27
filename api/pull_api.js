@@ -8,8 +8,10 @@ const fs = require('fs');
 const readline = require('readline');
 
 //read token & access key from stored files
-const new_token = fs.readFileSync('./new_token.txt', 'utf8');
-const accessKey = fs.readFileSync('./access_key.txt', 'utf8');
+const new_token = fs.readFileSync('./new_token.txt', 'utf8').trim();
+console.log(new_token);
+const accessKey = fs.readFileSync('./access_key.txt', 'utf8').trim();
+console.log(accessKey);
 //const {new_token} = require('./generate_token.js');
 
 
@@ -24,8 +26,20 @@ xhr.onreadystatechange = function () {
       console.log(xhr.status);
       console.log(xhr.responseText);
 
+
       //retrieve response and convert into a JSON string
-      data += JSON.stringify(xhr.responseText);
+      data = JSON.stringify(xhr.responseText);
+
+      //implement a check for the response, make sure it's valid
+      const test = "Success";
+      console.log(JSON.parse(data).Status);
+
+      if (test.localeCompare(JSON.parse(data).Status) == 0) {
+        console.log("testOK");
+      }
+
+
+
 
       //write this string into a file
       fs.writeFile('ParkingLotAvailability.json', data, (err) => {
