@@ -35,7 +35,7 @@
                 <span id = "message2" style = "margin-left:50px; color:red"> </span>
             </div>
             <div class="bottom-row">
-                <p class = "have-account">Already have an account? <a href = "http://127.0.0.1:5502/Screens/Login/login.html" target = "_self" class = "underline"> Log in.</a></p>
+                <p class = "have-account">Already have an account? <a href = "http://127.0.0.1:5502/Screens/login%20and%20Signup%20with%20firebase/login.html" target = "_self" class = "underline"> Log in.</a></p>
                 <button class = "account-creation" type = submit id = "signUpButton">Create Account</button>
             </div>
         </div>
@@ -73,6 +73,7 @@
             .then((userCredential) => {
                 const user = userCredential.user;
                 alert ("Your account has been created successfully");
+                window.open("http://127.0.0.1:5502/Screens/login%20and%20Signup%20with%20firebase/login.html", "_self");
             })
             .catch((error) => {
                 const errorCode = error.code;
