@@ -11,7 +11,7 @@ function validateLogin(email, pw){
       document.getElementById("message").innerHTML = "*Enter Password";  
       document.getElementById("usermessage").innerHTML = "";  
       return false;  
-    }  
+    }
     return true;
 }
     

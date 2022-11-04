@@ -4,24 +4,14 @@ function passDestination(){
     return;
 }
 
-var searchInput = "dest";
-
 $(document).ready(function () {
  var autocomplete;
- autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+ autocomplete = new google.maps.places.Autocomplete((document.getElementById("dest")), {
   componentRestrictions: {'country': ['SG']},
  });
   
  google.maps.event.addListener(autocomplete, 'place_changed', function () {
   var near_place = autocomplete.getPlace();
+  alert(near_place.geometry.location.lat());
  });
 });
-
-/*let autocomplete;
-function initAutocomplete(){
-    autocomplete = new google.maps.places.Autocomplete(document.getElementById('dest'),{
-        types: ['geocode'],
-        componentRestrictions: {'country': ['SG']},
-        fields: ['place_id', 'geometry', 'name']     
-    });
-}*/
