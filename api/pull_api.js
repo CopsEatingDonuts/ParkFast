@@ -1,17 +1,17 @@
 //will require xhr2 module, npm install xhr2
-var XMLHttpRequest = require("xhr2");
+import XMLHttpRequest from "xhr2";
 var url = "https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability";
 var xhr = new XMLHttpRequest();
 var data = "";
 
-const fs = require('fs');
-const readline = require('readline');
+import fs from 'fs';
+import readline from 'readline';
 
 //read token & access key from stored files
-const new_token = fs.readFileSync('./new_token.txt', 'utf8').trim();
-console.log(new_token);
-const accessKey = fs.readFileSync('./access_key.txt', 'utf8').trim();
-console.log(accessKey);
+const new_token = fs.readFileSync('./api\\new_token.txt', 'utf8').trim();
+console.log("Token used : "+new_token);
+const accessKey = fs.readFileSync('./api\\access_key.txt', 'utf8').trim();
+console.log("AccessKey used : "+accessKey);
 //const {new_token} = require('./generate_token.js');
 
 
@@ -32,9 +32,8 @@ xhr.onreadystatechange = function () {
 
       //implement a check for the response, make sure it's valid
       const test = "Success";
-      console.log(JSON.parse(data).Status);
 
-      if (test.localeCompare(JSON.parse(data).Status) == 0) {
+      if (test.localeCompare(JSON.parse(JSON.parse(data)).Status) == 0) {
         console.log("testOK");
       }
 
@@ -42,7 +41,7 @@ xhr.onreadystatechange = function () {
 
 
       //write this string into a file
-      fs.writeFile('ParkingLotAvailability.json', data, (err) => {
+      fs.writeFile('api\\ParkingLotAvailability.json', data, (err) => {
          if (err) throw err;
          console.log('Parking availability updated');
       });
@@ -58,9 +57,9 @@ next time probably wont use this setTimeout if we are splitting the files anyway
 */
 
 
-setTimeout(function() {console.log(results[0].geometries)}, 2000);
+//setTimeout(function() {console.log(results[0].geometries)}, 2000);
 
-var svy21_to_wgs84 =  require('./svy21_wgs84.js');
+import svy21_to_wgs84 from './svy21_wgs84.js';
 
 var wgs84_new_coords = svy21_to_wgs84(33394.2043, 32909.1642);
 console.log(wgs84_new_coords);

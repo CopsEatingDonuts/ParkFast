@@ -1,12 +1,12 @@
-var http = require('http');
-var util = require('util');
-var exec = require('child_process').exec;
+import http from 'http';
+import util from 'util';
+import exec from 'child_process';
 
-const fs = require('fs');
-const readline = require('readline');
+import fs from 'fs';
+import readline from 'readline';
 
 const rd = readline.createInterface({
-    input: fs.createReadStream('./new_token.txt'),
+    input: fs.createReadStream('./api\\new_token.txt'),
     output: process.stdout,
     console: false
 });
@@ -17,9 +17,9 @@ const rd = readline.createInterface({
 
 //var new_token = 'HBfad-eDpF48acAbaFe4ANYBdbd4FGwYafv43ebv8N-uZf2Zb5849fJeV8KBGa+AdArgaSg23eu-c8beRPn8KUkYe8edmab9pmf9';
 var get_token = 'curl "https://www.ura.gov.sg/uraDataService/insertNewToken.action" -H "AccessKey: dd528ffa-bad4-4e39-baeb-dfb9804afea2"'
-exec(get_token, function(error, stdout, stderr){
+exec.exec(get_token, function(error, stdout, stderr){
 
-    new_token = JSON.parse(stdout).Result;
+    var new_token = JSON.parse(stdout).Result;
     console.log(new_token);
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
@@ -28,7 +28,7 @@ exec(get_token, function(error, stdout, stderr){
     {
         console.log('exec error: ' + error);
     }
-    fs.writeFile('./new_token.txt', new_token, function(){});
+    fs.writeFile('./api\\new_token.txt', new_token, function(){});
 });
 
 //module.exports = {new_token};

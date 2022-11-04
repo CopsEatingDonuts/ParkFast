@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get, push, update, set } from "firebase/database";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -13,7 +13,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const dbRef = ref(getDatabase());
-
+/*
 // read database
 get(dbRef).then((snapshot) => {
   if (snapshot.exists()) {
@@ -26,6 +26,9 @@ get(dbRef).then((snapshot) => {
 }).catch((error) => {
   console.error(error);
 });
+*/
+
+
 
 /*
 function writeNewPost(uid, username, picture, title, body) {
@@ -52,16 +55,19 @@ function writeNewPost(uid, username, picture, title, body) {
   return update(ref(db), updates);
 } */
 
-/*
-const newPostKey = push(child(ref(database), 'posts')).key;
-const updates = {};
-updates['/posts/' + newPostKey] = {"abc":"testing"};
-update(ref(database),updates);
-*/
+
 
 /*
-set(ref(database, 'users/' + "testing"), {
-    username: "John",
-    email: "abc@gmail.com"
-  });
+const newPostKey = push(child(dbRef, 'Result')).key;
+const updates = {};
+updates['/Result/' + newPostKey] = {"abc":"testing"};
+update(dbRef,updates);
 */
+
+function writeUserData() {
+  set(dbRef, {
+    "Result": '[{"carparkNo":"A0046"}]'
+  });
+}
+
+writeUserData();

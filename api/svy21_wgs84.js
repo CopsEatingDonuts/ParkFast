@@ -15,7 +15,7 @@ var SVY21 = (function(){
   this.oLat = 1.366666; // origin's lat in degrees
   this.oLon = 103.833333; // origin's lon in degrees
   this.oN = 38744.572; // false Northing
-this.oE = 28001.642; // false Easting
+  this.oE = 28001.642; // false Easting
   this.k = 1; // scale factor
 
   this.init = function(){
@@ -166,11 +166,12 @@ this.calcM = function(lat, lon){
 
 // the function below, computeLatLon uses N,E. coords from ura api is in E,N. Therefore the function takes in y,x and uses them as x,y
 var trying = new SVY21();
-svy21_to_wgs84 = (function(y_coords, x_coords) {
+function svy21_to_wgs84(y_coords, x_coords) {
   var wgs84_coords = trying.computeLatLon(x_coords,y_coords);
   return wgs84_coords;
-})
-module.exports = svy21_to_wgs84;
+}
+
+export default svy21_to_wgs84;
 
 /*
 var http = require('http');
