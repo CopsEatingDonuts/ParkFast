@@ -12,17 +12,29 @@
             <span class="material-symbols-sharp" id = "target_location">location_on</span>
             <span id = "result_location"></span>
         </div>
-        
         <div class="button_label">
             <button id = "button1" onclick="setColor('button1','button2')">Nearest</button>
             <button id = "button2" onclick="setColor('button2','button1')">Price</button>
         </div>
+
         <form action = "DisplayCarparkAvailability.html">
             <button class="material-symbols-sharp" id = "favorite">favorite</button>
             <button class="material-symbols-outlined" 
             onclick="passParkingLot()">assistant_navigation    
-            </button>
+            <button class= "CarParkLocation">
+            <p id = "parking_location_1"></p>
+            <div>
         </form>
+
+        <form action = "DisplayCarparkAvailability.html">
+            <button class="material-symbols-sharp" id = "favorite">favorite</button>
+            <button class="material-symbols-outlined" 
+            onclick="passParkingLot()">assistant_navigation   
+            <button class= "CarParkLocation">
+            <p id = "parking_location_2"></p>
+            <div>
+        </form>
+
         <script src="DisplayCarparks.js"></script>
     </body>
 </html>

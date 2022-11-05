@@ -166,8 +166,8 @@ this.calcM = function(lat, lon){
 
 // the function below, computeLatLon uses N,E. coords from ura api is in E,N. Therefore the function takes in y,x and uses them as x,y
 var trying = new SVY21();
-function svy21_to_wgs84(y_coords, x_coords) {
-  var wgs84_coords = trying.computeLatLon(x_coords,y_coords);
+function svy21_to_wgs84(coords) {
+  var wgs84_coords = trying.computeLatLon(coords[1],coords[0]);
   return wgs84_coords;
 }
 
