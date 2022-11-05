@@ -24,11 +24,24 @@
             <button class="material-symbols-outlined" 
                 onclick="passParkingLot()">assistant_navigation    
             </button>
+            <button class="button1" id = "parking_location_1"></button>
         </div>
+
+        <div>
+            <button class="material-symbols-sharp" id = "favorite">favorite</button>
+            <button class="material-symbols-outlined" 
+                onclick="passParkingLot()">assistant_navigation    
+            </button>
+            <button class="button1" id = "parking_location_2"></button>
+        </div>
+
+        <script type="module" src="DisplayCarparks.js"></script>
     </body>
     <script>
         document.getElementById("result_location").innerHTML = sessionStorage.getItem("textvalue");
         var parkingLot = sessionStorage.getItem("textvalue");
+        //document.getElementById("parking_location_1").innerHTML = sessionStorage.getItem("near_place_lat"); //replace with 1st element of sorted carpark list
+        //document.getElementById("parking_location_2").innerHTML = sessionStorage.getItem("near_place_lat"); //replace with 2nd element of sorted carpark list
 
         function setColor(btn1, btn2) {
             var property1 = document.getElementById(btn1);

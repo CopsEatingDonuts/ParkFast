@@ -12,6 +12,8 @@ $(document).ready(function () {
   
  google.maps.event.addListener(autocomplete, 'place_changed', function () {
   var near_place = autocomplete.getPlace();
-  alert(near_place.geometry.location.lat());
+  //alert(near_place.geometry.location.lat());
+  sessionStorage.setItem("near_place_lat", near_place.geometry.location.lat());
+  sessionStorage.setItem("near_place_lng", near_place.geometry.location.lng());
  });
 });
