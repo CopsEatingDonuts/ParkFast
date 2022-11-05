@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang = "en">
-    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@40,400,0,0" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@40,400,0,0" />
-        <link rel="stylesheet" href="DisplayCarparks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@40,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@40,400,0,0" />
+    <link rel="stylesheet" href="DisplayCarparks.css">
+    <head>
+        <p class = "Headings">Available Carparks</p>
     </head>
     <body>
-        <p class = "Headings">Available Carparks</p>
         <div class= "location">
             <span class="material-symbols-sharp" id = "target_location">location_on</span>
             <span id = "result_location"></span>
@@ -17,12 +18,67 @@
             <button id = "button1" onclick="setColor('button1','button2')">Nearest</button>
             <button id = "button2" onclick="setColor('button2','button1')">Price</button>
         </div>
-        <form action = "DisplayCarparkAvailability.html">
+        
+        <div>
             <button class="material-symbols-sharp" id = "favorite">favorite</button>
             <button class="material-symbols-outlined" 
-            onclick="passParkingLot()">assistant_navigation    
+                onclick="passParkingLot()">assistant_navigation    
             </button>
-        </form>
-        <script src="../control/DisplayCarparks.js"></script>
+        </div>
     </body>
+    <script>
+        document.getElementById("result_location").innerHTML = sessionStorage.getItem("textvalue");
+        var parkingLot = sessionStorage.getItem("textvalue");
+
+        function setColor(btn1, btn2) {
+            var property1 = document.getElementById(btn1);
+            var property2 = document.getElementById(btn2);
+            property1.style.backgroundColor = "rgb(29, 155, 220)"
+            property1.style.color = "white";
+            property1.style.fontWeight = "bold";
+            property1.style.opacity = 1
+            property2.style.opacity = 0.4
+            property2.style.backgroundColor = "white"
+            property2.style.color = "black"
+            property2.style.fontWeight = "normal"
+        }
+            
+        function passParkingLot(){
+            sessionStorage.setItem("carparkValue", parkingLot);
+            return;
+        }
+    </script>
+    <script type = "module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+
+        const firebaseConfig = {       
+        apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
+        authDomain: "parkfast-23bd8.firebaseapp.com",
+        databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "parkfast-23bd8",
+        storageBucket: "parkfast-23bd8.appspot.com",
+        messagingSenderId: "333155544674",
+        appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
+        measurementId: "G-5K5M61GXK1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+
+        document.getElementById("favorite").addEventListener("click", addToFavorite);
+
+        function addToFavorite(){
+            set(ref(db, "drivers/" + "lai"), {
+                username: "lai"  
+            })
+            .then(()=>{
+                console.log("data stored")
+            })
+            .catch((error)=>{
+                alert("unsuccessful "+ error)
+            });
+        }
+        
+    </script>
 </html>

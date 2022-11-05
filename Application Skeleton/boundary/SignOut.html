@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <button id = "signOutUser">Sign Out</button>
+    <script src = "../control/SignOut.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+
+        const firebaseConfig = {       
+        apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
+        authDomain: "parkfast-23bd8.firebaseapp.com",
+        databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "parkfast-23bd8",
+        storageBucket: "parkfast-23bd8.appspot.com",
+        messagingSenderId: "333155544674",
+        appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
+        measurementId: "G-5K5M61GXK1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getDatabase();
+        
+        document.getElementById("signOutUser").addEventListener("click", (e)=>{
+            e.preventDefault();
+            signOut(auth).then(() => {
+                console.log("Signed out")
+            }).catch((error) => {
+                console.log("error: " + error)
+            });
+
+            set(ref(db, "drivers/" + "lai"), {
+                username: "lai"  
+            })
+            .then(()=>{
+                console.log("data stored")
+            })
+            .catch((error)=>{
+                alert("unsuccessful "+ error)
+            });
+        })
+    </script>
+</html>

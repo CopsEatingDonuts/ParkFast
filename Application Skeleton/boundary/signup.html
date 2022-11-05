@@ -44,7 +44,6 @@
     <script type = "module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
 
         const firebaseConfig = {       
         apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
@@ -58,7 +57,6 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        window.database = getDatabase(app);
         window.auth = getAuth(app);
 
         document.getElementById('signUpButton').addEventListener('click', signUp);
@@ -79,8 +77,9 @@
                 const errorMessage = error.message;
                 alert (errorMessage);
             })
-            
         }
+
+       
         }
     </script> 
 </html>
