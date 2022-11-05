@@ -14,6 +14,12 @@ $(document).ready(function () {
   
  google.maps.event.addListener(autocomplete, 'place_changed', function () {
   var near_place = autocomplete.getPlace();
+  console.log(near_place);
+/*
+  const geocoder = new google.maps.Geocoder();
+  var coords = geocoder.geocode({ placeId: near_place.place_id });
+  console.log(coords);
+*/
  });
 });
 
