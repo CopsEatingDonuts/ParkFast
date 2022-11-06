@@ -6,7 +6,7 @@ import fs from 'fs';
 import readline from 'readline';
 
 const rd = readline.createInterface({
-    input: fs.createReadStream('./api\\new_token.txt'),
+    input: fs.createReadStream('new_token.txt'),
     output: process.stdout,
     console: false
 });
@@ -23,12 +23,12 @@ exec.exec(get_token, function(error, stdout, stderr){
     console.log(new_token);
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
-    
+
     if(error !== null)
     {
         console.log('exec error: ' + error);
     }
-    fs.writeFile('./api\\new_token.txt', new_token, function(){});
+    fs.writeFile('new_token.txt', new_token, function(){});
 });
 
 //module.exports = {new_token};
