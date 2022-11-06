@@ -24,7 +24,7 @@
             <button class="material-symbols-outlined" 
                 onclick="passParkingLot()">assistant_navigation    
             </button>
-            <button class="button1" id = "parking_location_1"></button>
+            <p class="button1" id = "parking_location_1"></p>
         </div>
 
         <div>
@@ -35,36 +35,22 @@
             <button class="button1" id = "parking_location_2"></button>
         </div>
 
-        <script type="module" src="../control/DisplayCarparks.js"></script>
     </body>
-    <script>
-        document.getElementById("result_location").innerHTML = sessionStorage.getItem("textvalue");
-        var parkingLot = sessionStorage.getItem("textvalue");
-        //document.getElementById("parking_location_1").innerHTML = //carParkAvail[0]
-        //document.getElementById("parking_location_2").innerHTML = //carParkAvail[1]
+    <script type = "module">
+        //import sortCarParkAvail from '../entity/api/SearchByDistance.js';
+        var near_place_lat = sessionStorage.getItem("near_place_lat");
+        var near_place_lng = sessionStorage.getItem("near_place_lng");
+        //var carParkAvail = sortCarParkAvail(near_place_lat, near_place_lng);
+        
 
-        function setColor(btn1, btn2) {
-            var property1 = document.getElementById(btn1);
-            var property2 = document.getElementById(btn2);
-            property1.style.backgroundColor = "rgb(29, 155, 220)"
-            property1.style.color = "white";
-            property1.style.fontWeight = "bold";
-            property1.style.opacity = 1
-            property2.style.opacity = 0.4
-            property2.style.backgroundColor = "white"
-            property2.style.color = "black"
-            property2.style.fontWeight = "normal"
-        }
-            
-        function passParkingLot(){
-            sessionStorage.setItem("carparkValue", parkingLot);
-            return;
-        }
+        document.getElementById("parking_location_1").innerHTML = "test";
+        //document.getElementById("parking_location_2").innerHTML = carParkAvail[1];
+        
     </script>
     <script type = "module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-
+        
         const firebaseConfig = {       
         apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
         authDomain: "parkfast-23bd8.firebaseapp.com",
@@ -78,12 +64,11 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase();
-
+        
         document.getElementById("favorite").addEventListener("click", addToFavorite);
-
         function addToFavorite(){
-            set(ref(db, "drivers/" + "lai"), {
-                username: "lai"  
+            set(ref(db, "drivers/" + "testing123"), {
+                username: "testing123"  
             })
             .then(()=>{
                 console.log("data stored")
@@ -92,6 +77,8 @@
                 alert("unsuccessful "+ error)
             });
         }
-        
+    </script>
+    
+    <script src="../control/DisplayCarparks.js">
     </script>
 </html>

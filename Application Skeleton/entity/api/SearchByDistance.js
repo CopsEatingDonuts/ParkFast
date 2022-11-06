@@ -1,5 +1,5 @@
 //import near_place from '../Screens\\SearchDestination\\SearchDestination.js';
-import fs from 'fs';
+import {fs} from 'fs';
 import svy21_to_wgs84 from './svy21_wgs84.js';
 
 let rawdata = fs.readFileSync('api\\ParkingLotAvailability.json');
@@ -62,5 +62,6 @@ for (let i=0; i<carParkAvail.length; i++) {
     var y = svy21_to_wgs84(try_coords);
     console.log(distance(y.lat, 1.3138921701076636, y.lon, 103.88178786007539));
 }
+
 
 export default sortCarParkAvail;

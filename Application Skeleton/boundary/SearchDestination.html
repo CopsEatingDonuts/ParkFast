@@ -1,9 +1,26 @@
 <!DOCTYPE><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"><!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="SearchDestination.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
+    <div class="popup">
+        <div class = "user">
+            <style>
+                .material-symbols-outlined {
+                  font-variation-settings:
+                  'FILL' 1,
+                  'wght' 400,
+                  'GRAD' 0,
+                  'opsz' 48
+                }
+                </style>
+            <span id="account"></span>
+        </div>
+        <button id = "favorites">favorites</button>
+        <button id="signInOut"></button>
+    </div>
     <div class="menu">
         <button type="button"><i class="fa-solid fa-bars"></i></button>
     </div>
@@ -25,9 +42,9 @@
         <input  class = "time_minute" type = "number" placeholder="0"> 
         <label>minutes</label>    
     </div>
-      
-    <script src="../control/SearchDestination.js"></script>  
+
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places" async defer>
     </script>
+    <script src="../control/SearchDestination.js"></script>  
 </html>

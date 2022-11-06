@@ -74,6 +74,7 @@ button{
     border-style: solid;
 }
 
+
 .counter .time_hour{
     width: 90px;
     padding: 3px;
@@ -85,4 +86,18 @@ button{
     width: 90px;
     padding: 3px;
     border-radius: 10px;
+}
+
+.popup{
+    position:absolute;
+    width:500px;
+    height:100%;
+    background-color:rgb(199, 202, 239);
+    border-radius: 10px;
+}
+
+.popup .user{
+    top: 50px;
+    height:50px;
+    padding:40px;
 }
