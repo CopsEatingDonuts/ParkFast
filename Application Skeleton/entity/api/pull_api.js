@@ -8,9 +8,9 @@ import fs from 'fs';
 import readline from 'readline';
 
 //read token & access key from stored files
-const new_token = fs.readFileSync('./api\\new_token.txt', 'utf8').trim();
+const new_token = fs.readFileSync('new_token.txt', 'utf8').trim();
 console.log("Token used : "+new_token);
-const accessKey = fs.readFileSync('./api\\access_key.txt', 'utf8').trim();
+const accessKey = fs.readFileSync('access_key.txt', 'utf8').trim();
 console.log("AccessKey used : "+accessKey);
 //const {new_token} = require('./generate_token.js');
 
@@ -41,7 +41,7 @@ xhr.onreadystatechange = function () {
 
 
       //write this string into a file
-      fs.writeFile('api\\ParkingLotAvailability.json', data, (err) => {
+      fs.writeFile('ParkingLotAvailability.json', data, (err) => {
          if (err) throw err;
          console.log('Parking availability updated');
       });
