@@ -17,3 +17,13 @@ $(document).ready(function () {
   sessionStorage.setItem("near_place_lng", near_place.geometry.location.lng());
  });
 });
+
+document.getElementById("openButton").addEventListener("click", popUp);
+function popUp(){
+    document.body.classList.add("active-popup");
+}
+
+document.getElementById("closeButton").addEventListener("click", closePopUp);
+function closePopUp(){
+    document.body.classList.remove("active-popup");
+}

@@ -1,10 +1,75 @@
-html, body {
+html, body.active-popup {
     margin: 0;
     padding: 0;
     background-image: url('https://st4.depositphotos.com/1302980/26678/v/600/depositphotos_266783454-stock-video-city-map-with-gps-pins.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    overflow: hidden;
+}
+
+body.active-popup .main{
+    transition: filter 0ms ease-in-out 300ms;
+}
+
+body.active-popup .popup{
+    opacity: 1;
+    top: auto;
+    transition: top 0ms ease-in-out 300ms,
+                opacity 300ms ease-in-out,
+                margin-top 300ms ease-in-out;
+}
+
+.main{
+    transition: filter 0ms ease-in-out 300ms;
+}
+
+.popup{
+    z-index: 9;
+    position:absolute;
+    top: -100%;
+    width:80%;
+    height:100%;
+    background-color:rgb(232, 233, 252);
+    border-radius: 10px;
+}
+
+.popup #closeButton{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color:aliceblue;
+    border-radius: 50%;
+
+}
+
+.popup .user{
+    top: 50px;
+    width: 80%;
+    height:25px;
+    padding: 10px;
+}
+
+.popup #favorites{
+    text-align:left;
+    height: auto;
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(29, 155, 240);
+    width:100%;
+    font-size: 22px;
+}
+
+.popup #signInOut{
+    text-align: left;
+    border-radius: 5px;
+    width:100%;
+    color: rgb(29, 155, 240);
+    font-size: 22px;
+}
+
+.popup .user #userLogo{
+    color: rgb(29, 155, 240);
 }
 
 .menu{
@@ -86,18 +151,4 @@ button{
     width: 90px;
     padding: 3px;
     border-radius: 10px;
-}
-
-.popup{
-    position:absolute;
-    width:500px;
-    height:100%;
-    background-color:rgb(199, 202, 239);
-    border-radius: 10px;
-}
-
-.popup .user{
-    top: 50px;
-    height:50px;
-    padding:40px;
 }

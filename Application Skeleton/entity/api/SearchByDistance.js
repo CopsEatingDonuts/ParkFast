@@ -64,4 +64,4 @@ for (let i=0; i<carParkAvail.length; i++) {
 }
 
 
-export default sortCarParkAvail;
+export {sortCarParkAvail};

@@ -37,10 +37,10 @@
 
     </body>
     <script type = "module">
-        //import sortCarParkAvail from '../entity/api/SearchByDistance.js';
+        //import {sortCarParkAvail} from '../entity/api/SearchByDistance.js';
         var near_place_lat = sessionStorage.getItem("near_place_lat");
         var near_place_lng = sessionStorage.getItem("near_place_lng");
-        //var carParkAvail = sortCarParkAvail(near_place_lat, near_place_lng);
+        var carParkAvail = sortCarParkAvail(near_place_lat, near_place_lng);
         
 
         document.getElementById("parking_location_1").innerHTML = "test";
