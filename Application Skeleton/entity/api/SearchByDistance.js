@@ -49,6 +49,7 @@ function compareShortestPath(destination_lat, destination_lon) {
 }
 function sortCarParkAvail(lat_coords, lon_coords) {
     carParkAvail.sort(compareShortestPath(lat_coords, lon_coords));
+    return carParkAvail;
 }
 
 carParkAvail.sort(compareShortestPath(1.3138921701076636, 103.88178786007539));     //sort based on shortest distance from the wgs84 coords 1.3138921701076636, 103.88178786007539
