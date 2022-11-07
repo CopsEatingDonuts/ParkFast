@@ -14,7 +14,11 @@ function setColor(btn1, btn2) {
 document.getElementById("result_location").innerHTML = sessionStorage.getItem("textvalue");
 var parkingLot = sessionStorage.getItem("textvalue");
 
-function passParkingLot(){
+function passParkingLot(num){
     sessionStorage.setItem("carparkValue", parkingLot);
+    var dataset = JSON.parse(sessionStorage.getItem("dataset"));
+    coords = ((dataset[num].geometries[0].coordinates).split(',').map(Number));
+    sessionStorage.setItem("near_place_lat", coords[0]);
+    sessionStorage.setItem("near_place_lng", coords[1]);
     return;
 }

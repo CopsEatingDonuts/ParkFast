@@ -1,16 +1,11 @@
-//import near_place from '../Screens\\SearchDestination\\SearchDestination.js';
 import fs from 'fs';
 import svy21_to_wgs84 from './svy21_wgs84.js';
 
 let uradata = fs.readFileSync('api\\ParkingLotAvailability.json');
-//console.log(typeof(rawdata));
 var uraCarParkAvail = JSON.parse(JSON.parse(uradata)).Result;
-console.log(uraCarParkAvail[0].geometries);
-//console.log(typeof(uraCarParkAvail[0].geometries[0].coordinates));
+
 let hdbdata = fs.readFileSync('Application Skeleton/entity/api/HDBParkingLotAvailability.json');
 var hdbCarParkAvail = JSON.parse(hdbdata);
-console.log(hdbCarParkAvail[0].geometries);
-//console.log(typeof(hdbCarParkAvail[0].geometries[0].coordinates));
 
 function distance(lat1, lat2, lon1, lon2)
 {
@@ -41,7 +36,11 @@ function distance(lat1, lat2, lon1, lon2)
 
 function compareShortestPath(destination_lat, destination_lon) {
     return function path(a, b) {
-        if (a.geometries)
+        try {
+            (a.geometries[0]);
+            (b.geometries[0]);
+        }
+        catch(err) {return 99999;}
         var a_coords = ((a.geometries[0].coordinates).split(',')).map(Number);
         a_coords = svy21_to_wgs84(a_coords);
 
@@ -57,20 +56,19 @@ function sortCarParkAvail(dataset, lat_coords, lon_coords) {
     dataset.sort(compareShortestPath(lat_coords, lon_coords));
     return dataset;
 }
-/*
+
+console.log(uraCarParkAvail);
 sortCarParkAvail(uraCarParkAvail, 1.3138921701076636, 103.88178786007539);
-//carParkAvail.sort(compareShortestPath(1.3138921701076636, 103.88178786007539));     //sort based on shortest distance from the wgs84 coords 1.3138921701076636, 103.88178786007539
 console.log(uraCarParkAvail[0]);                       // closest carpark
 console.log(uraCarParkAvail[1]);                       // 2nd closest carpark
 console.log(uraCarParkAvail[2]);                       // 3rd closest carpark
-*/
+
+
 sortCarParkAvail(hdbCarParkAvail, 1.3138921701076636, 103.88178786007539);
-/*
-//carParkAvail.sort(compareShortestPath(1.3138921701076636, 103.88178786007539));     //sort based on shortest distance from the wgs84 coords 1.3138921701076636, 103.88178786007539
 console.log(hdbCarParkAvail[0]);                       // closest carpark
 console.log(hdbCarParkAvail[1]);                       // 2nd closest carpark
 console.log(hdbCarParkAvail[2]);                       // 3rd closest carpark
-*\
+
 /*
 for (let i=0; i<carParkAvail.length; i++) {
     var try_coords = ((carParkAvail[i].geometries[0].coordinates).split(',')).map(Number);
