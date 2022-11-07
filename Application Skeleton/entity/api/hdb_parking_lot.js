@@ -48,15 +48,7 @@ function processArray() {
         }
       }
     }
-
-    //write this string into a file
-    //fs.writeFile('HDBParkingLotAvailability.json', data, (err) => {
-       //if (err) throw err;
-       //console.log('HDB Parking availability updated');
-    //});
-
   }, 500);
-
 }
 
 function importCSV() {
@@ -73,8 +65,6 @@ function importCSV() {
   });
 }
 
-
-
 function insertAddress() {
   xhr.send();
   setTimeout(function() {processArray()}, 3000);
@@ -85,8 +75,6 @@ function insertAddress() {
        console.log('HDB Parking availability updated');
        });
   }, 6000);
-
 }
-
 
 insertAddress();
