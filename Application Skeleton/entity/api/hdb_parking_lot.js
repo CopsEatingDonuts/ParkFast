@@ -1,4 +1,3 @@
-//will require xhr2 module, npm install xhr2
 import XMLHttpRequest from "xhr2";
 import {parse} from "csv-parse";
 var url = "https://api.data.gov.sg/v1/transport/carpark-availability";

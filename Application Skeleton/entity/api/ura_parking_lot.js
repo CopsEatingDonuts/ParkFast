@@ -1,4 +1,3 @@
-//will require xhr2 module, npm install xhr2
 import XMLHttpRequest from "xhr2";
 var url = "https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability";
 var xhr = new XMLHttpRequest();
@@ -51,9 +50,3 @@ xhr.onreadystatechange = function () {
 
 //execute curl request
 xhr.send();
-
-/* javascript runs asynchrously. I'm setting a timeout of 1second to give time for the exec code above to run and update
-the variable 'dicionary' before printing out dictionary
-
-next time probably wont use this setTimeout if we are splitting the files anyway
-*/
