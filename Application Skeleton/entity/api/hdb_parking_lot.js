@@ -1,8 +1,12 @@
 //will require xhr2 module, npm install xhr2
 import XMLHttpRequest from "xhr2";
+import {parse} from "csv-parse";
 var url = "https://api.data.gov.sg/v1/transport/carpark-availability";
 var xhr = new XMLHttpRequest();
 var data = "";
+var jsonData;
+var temp;
+var csv = [];
 
 import fs from 'fs';
 import readline from 'readline';
@@ -19,20 +23,70 @@ xhr.onreadystatechange = function () {
 
       //retrieve response and convert into a JSON string
       data = JSON.stringify(xhr.responseText);
+}};
 
-      //implement a check for the response, make sure it's valid
-      const test = "Success";
+function processArray() {
+  jsonData = JSON.parse(JSON.parse(data));
+  temp = jsonData.items[0].carpark_data;
+  var length = temp.length;
 
-      if (test.localeCompare(JSON.parse(JSON.parse(data)).Status) == 0) {
-        console.log("testOK");
+  importCSV();
+  setTimeout(function() {
+    var csvLen = csv.length;
+    for (var i=0; i<length; i++) {
+      //console.log(temp[i].carpark_number);
+      for (var j=0; j<csvLen; j++) {
+        if (temp[i].carpark_number == csv[j][0]) {
+          temp[i].Address = csv[j][1];
+          temp[i].geometries =[];
+          var tempX = csv[j][2];
+          var tempY = csv[j][3];
+          var tempdict = {};
+          tempdict.coordinates = String(tempX) + "," + String(tempY);
+          temp[i].geometries.push(tempdict);
+          //console.log(temp[i].Address);
+        }
       }
+    }
 
-      //write this string into a file
-      fs.writeFile('HDBParkingLotAvailability.json', data, (err) => {
-         if (err) throw err;
-         console.log('HDB Parking availability updated');
-      });
-   }};
+    //write this string into a file
+    //fs.writeFile('HDBParkingLotAvailability.json', data, (err) => {
+       //if (err) throw err;
+       //console.log('HDB Parking availability updated');
+    //});
 
-//execute curl request
-xhr.send();
+  }, 500);
+
+}
+
+function importCSV() {
+  fs.createReadStream("hdb-carpark-information.csv")
+  .pipe(parse({ delimiter: ",", from_line: 2 }))
+  .on("data", function (row) {
+    csv.push(row);
+  })
+  .on("error", function (error) {
+    console.log(error.message);
+  })
+  .on("end", function () {
+    console.log("finished");
+  });
+}
+
+
+
+function insertAddress() {
+  xhr.send();
+  setTimeout(function() {processArray()}, 3000);
+  setTimeout(function() {
+    //write this string into a file
+    fs.writeFile('HDBParkingLotAvailability.json', JSON.stringify(temp), (err) => {
+       if (err) throw err;
+       console.log('HDB Parking availability updated');
+       });
+  }, 6000);
+
+}
+
+
+insertAddress();
