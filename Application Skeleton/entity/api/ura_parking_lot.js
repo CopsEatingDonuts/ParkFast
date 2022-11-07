@@ -34,11 +34,8 @@ xhr.onreadystatechange = function () {
       const test = "Success";
 
       if (test.localeCompare(JSON.parse(JSON.parse(data)).Status) == 0) {
-        console.log("testOK");
+        console.log("testOK");  
       }
-
-
-
 
       //write this string into a file
       fs.writeFile('ParkingLotAvailability.json', data, (err) => {
