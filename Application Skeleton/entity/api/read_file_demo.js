@@ -4,13 +4,16 @@ import { getDatabase, ref, child, get, push, update, set } from "firebase/databa
 
 import fs from 'fs';
 
-let rawdata = fs.readFileSync('Application Skeleton/entity/api/ParkingLotAvailability.json');
+let rawdata = fs.readFileSync('Application Skeleton/entity/api/FinalDataSet.json');
 console.log(typeof(rawdata));
-var carParkAvail = JSON.parse(JSON.parse(rawdata)).Result;
+var carParkAvail = JSON.parse(rawdata);
+//console.log(carParkAvail);
+
 for (let i=0;i<carParkAvail.length;i++) {
-  console.log(carParkAvail[i].carparkNo);
+  console.log(carParkAvail[i].Address);
 }
-/*
+
+
 const firebaseConfig = {
     // ...
     // The value of `databaseURL` depends on the location of the database
@@ -31,4 +34,3 @@ function writeUserData() {
   }
   
 writeUserData();
-*/

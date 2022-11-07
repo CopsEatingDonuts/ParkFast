@@ -20,7 +20,7 @@
         
         <p id = "parking_location_1"></p>
         <div class = "optionBar">
-            <form action="http://127.0.0.1:5500/boundary/DisplayCarparkAvailability.html">
+            <form action="DisplayCarparkAvailability.html">
                 <button class="material-symbols-outlined"
                     onclick="passParkingLot(1)">assistant_navigation    
                 </button>
@@ -29,7 +29,7 @@
 
         <p id = "parking_location_2"></p>
         <div class = "optionBar">
-            <form action="http://127.0.0.1:5500/boundary/DisplayCarparkAvailability.html">
+            <form action="/DisplayCarparkAvailability.html">
                 <button class="material-symbols-outlined"
                     onclick="passParkingLot(2)">assistant_navigation    
                 </button>
@@ -58,8 +58,8 @@
             //console.log(typeof(carParkAvail.Result));
             var carParkAvail = sortCarParkAvail(carParkAvail.Result, near_place_lat, near_place_lng);
             sessionStorage.setItem("dataset", JSON.stringify(carParkAvail));
-            document.getElementById("parking_location_1").innerHTML = carParkAvail[0].geometries[0].coordinates;
-            document.getElementById("parking_location_2").innerHTML = carParkAvail[1].geometries[0].coordinates;
+            document.getElementById("parking_location_1").innerHTML = carParkAvail[0].Address;
+            document.getElementById("parking_location_2").innerHTML = carParkAvail[1].Address;
             return;
         } else {
             console.log("No data available");
