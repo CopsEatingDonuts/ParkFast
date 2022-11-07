@@ -1,5 +1,6 @@
 import {initializeApp} from "firebase/app";
 import { getDatabase, ref, child, get, push, update, set } from "firebase/database";
+import {sortCarParkAvail} from "../Application Skeleton/entity/api/SearchByDistance.js";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -13,12 +14,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const dbRef = ref(getDatabase());
-/*
+
 // read database
 get(dbRef).then((snapshot) => {
   if (snapshot.exists()) {
     //snapshot.val() is the database
-    console.log(snapshot.val());
+    var carParkAvail = snapshot.val();
+    //console.log(typeof(carParkAvail));
+    var carParkAvail = sortCarParkAvail(1.3138921701076636, 103.88178786007539);
+    console.log(carParkAvail[0]);
+    console.log(carParkAvail[1]);
+    console.log(carParkAvail[2]);
     return;
   } else {
     console.log("No data available");
@@ -26,8 +32,11 @@ get(dbRef).then((snapshot) => {
 }).catch((error) => {
   console.error(error);
 });
-*/
-
+/*
+var carParkAvail = sortCarParkAvail(carparkstest, 1.3138921701076636, 103.88178786007539);
+console.log(carParkAvail[0]);
+console.log(carParkAvail[1]);
+console.log(carParkAvail[2]); */
 
 
 /*
@@ -63,7 +72,7 @@ const updates = {};
 updates['/Result/' + newPostKey] = {"abc":"testing"};
 update(dbRef,updates);
 */
-
+/*
 function writeUserData() {
   set(dbRef, {
     "Result": '[{"carparkNo":"A0046"}]'
@@ -71,3 +80,4 @@ function writeUserData() {
 }
 
 writeUserData();
+*/

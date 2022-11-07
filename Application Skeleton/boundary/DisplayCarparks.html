@@ -19,13 +19,13 @@
             <button id = "button2" onclick="setColor('button2','button1')">Price</button>
         </div>
         
-        <div>
+        <form action="DisplayCarparkAvailability.html">
             <button class="material-symbols-sharp" id = "favorite">favorite</button>
             <button class="material-symbols-outlined" 
                 onclick="passParkingLot()">assistant_navigation    
             </button>
             <p class="button1" id = "parking_location_1"></p>
-        </div>
+        </form>
 
         <div>
             <button class="material-symbols-sharp" id = "favorite">favorite</button>
@@ -37,47 +37,88 @@
 
     </body>
     <script type = "module">
-        //import {sortCarParkAvail} from '../entity/api/SearchByDistance.js';
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        const firebaseConfig1 = {
+            // ...
+            // The value of `databaseURL` depends on the location of the database
+            databaseURL: "https://sc2006-22428-default-rtdb.asia-southeast1.firebasedatabase.app/",
+            //https://sc2006-22428-default-rtdb.asia-southeast1.firebasedatabase.app/
+        };
+        // Initialize Firebase
+        const app1 = initializeApp(firebaseConfig1);
+        const dbRef = ref(getDatabase());
+        // read database
+        get(dbRef).then((snapshot) => {
+        if (snapshot.exists()) {
+            //snapshot.val() is the database
+            var carparkAvail = snapshot.val();
+            return;
+        } else {
+            console.log("No data available");
+        }
+        }).catch((error) => {
+        console.error(error);
+        });
+
+                
+        function distance(lat1, lat2, lon1, lon2)
+        {
+            // The math module contains a function
+            // named toRadians which converts from
+            // degrees to radians.
+            lon1 =  lon1 * Math.PI / 180;
+            lon2 = lon2 * Math.PI / 180;
+            lat1 = lat1 * Math.PI / 180;
+            lat2 = lat2 * Math.PI / 180;
+
+            // Haversine formula
+            let dlon = lon2 - lon1;
+            let dlat = lat2 - lat1;
+            let a = Math.pow(Math.sin(dlat / 2), 2)
+            + Math.cos(lat1) * Math.cos(lat2)
+            * Math.pow(Math.sin(dlon / 2),2);
+
+            let c = 2 * Math.asin(Math.sqrt(a));
+
+            // Radius of earth in kilometers. Use 3956
+            // for miles
+            let r = 6371;
+
+            // calculate the result
+            return(c * r);
+        }
+
+        function compareShortestPath(destination_lat, destination_lon) {
+            return function path(a, b) {
+                var a_coords = ((a.geometries[0].coordinates).split(',')).map(Number);
+                a_coords = svy21_to_wgs84(a_coords);
+
+                var b_coords = ((b.geometries[0].coordinates).split(',')).map(Number);
+                b_coords = svy21_to_wgs84(b_coords);
+
+                var a_distance = distance(a_coords.lat,destination_lat,a_coords.lon,destination_lon);
+                var b_distance = distance(b_coords.lat,destination_lat,b_coords.lon,destination_lon);
+                return a_distance - b_distance;
+            }
+        }
+        function sortCarParkAvail(lat_coords, lon_coords) {
+            carParkAvail.sort(compareShortestPath(lat_coords, lon_coords));
+            return carParkAvail;
+        }
+
         var near_place_lat = sessionStorage.getItem("near_place_lat");
         var near_place_lng = sessionStorage.getItem("near_place_lng");
         var carParkAvail = sortCarParkAvail(near_place_lat, near_place_lng);
-        
+        console.log(carParkAvail[0]);
+        console.log(carParkAvail[1]);
+        console.log(carParkAvail[2]);
 
-        document.getElementById("parking_location_1").innerHTML = "test";
+        document.getElementById("parking_location_1").innerHTML = carParkAvail[0];
         //document.getElementById("parking_location_2").innerHTML = carParkAvail[1];
         
     </script>
-    <script type = "module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-        
-        const firebaseConfig = {       
-        apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
-        authDomain: "parkfast-23bd8.firebaseapp.com",
-        databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "parkfast-23bd8",
-        storageBucket: "parkfast-23bd8.appspot.com",
-        messagingSenderId: "333155544674",
-        appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
-        measurementId: "G-5K5M61GXK1"
-        };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase();
-        
-        document.getElementById("favorite").addEventListener("click", addToFavorite);
-        function addToFavorite(){
-            set(ref(db, "drivers/" + "testing123"), {
-                username: "testing123"  
-            })
-            .then(()=>{
-                console.log("data stored")
-            })
-            .catch((error)=>{
-                alert("unsuccessful "+ error)
-            });
-        }
-    </script>
     
     <script src="../control/DisplayCarparks.js">
     </script>
