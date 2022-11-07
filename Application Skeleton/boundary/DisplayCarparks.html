@@ -19,26 +19,31 @@
             <button id = "button2" onclick="setColor('button2','button1')">Price</button>
         </div>
         
-        <form action="DisplayCarparkAvailability.html">
-            <button class="material-symbols-sharp" id = "favorite">favorite</button>
-            <button class="material-symbols-outlined" 
-                onclick="passParkingLot(1)">assistant_navigation    
-            </button>
-            <p class="button1" id = "parking_location_1"></p>
-        </form>
+        <p id = "parking_location_1"></p>
+        <div class = "optionBar">
+            <button class="material-symbols-sharp" id = "favorite1">favorite</button>
+            <form action="DisplayCarparkAvailability.html">
+                <button class="material-symbols-outlined" 
+                    onclick="passParkingLot(1)">assistant_navigation    
+                </button>
+            </form>
+        </div>
 
-        <form action="DisplayCarparkAvailability.html">
-            <button class="material-symbols-sharp" id = "favorite">favorite</button>
-            <button class="material-symbols-outlined" 
-                onclick="passParkingLot(2)">assistant_navigation    
-            </button>
-            <button class="button1" id = "parking_location_2"></button>
-        </form>
+        <p id = "parking_location_2"></p>
+        <div class = "optionBar">
+            <button class="material-symbols-sharp" id = "favorite2">favorite</button>
+            <form action="DisplayCarparkAvailability.html">
+                <button class="material-symbols-outlined" 
+                    onclick="passParkingLot(2)">assistant_navigation    
+                </button>
+            </form>
+        </div>
 
     </body>
     <script type = "module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        import { getDatabase, ref, set, get, push } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
         const firebaseConfig1 = {
             // ...
             // The value of `databaseURL` depends on the location of the database
@@ -47,7 +52,7 @@
         };
         // Initialize Firebase
         const app1 = initializeApp(firebaseConfig1);
-        const dbRef = ref(getDatabase());
+        const dbRef = ref(getDatabase(app1));
         // read database
         get(dbRef).then((snapshot) => {
         if (snapshot.exists()) {
@@ -287,19 +292,40 @@
 
         var near_place_lat = sessionStorage.getItem("near_place_lat");
         var near_place_lng = sessionStorage.getItem("near_place_lng");
-        /*
-        var carParkAvail = sortCarParkAvail(carParkAvail, near_place_lat, near_place_lng);
-        console.log(carParkAvail[0]);
-        console.log(carParkAvail[1]);
-        console.log(carParkAvail[2]);
-        */
+        
+        const firebaseConfig2 = {       
+        apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
+        authDomain: "parkfast-23bd8.firebaseapp.com",
+        databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "parkfast-23bd8",
+        storageBucket: "parkfast-23bd8.appspot.com",
+        messagingSenderId: "333155544674",
+        appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
+        measurementId: "G-5K5M61GXK1"
+        };
 
-        //document.getElementById("parking_location_1").innerHTML = carParkAvail[0];
-        //document.getElementById("parking_location_2").innerHTML = carParkAvail[1];
+        const app2 = initializeApp(firebaseConfig2);
+        const auth2 = getAuth(app2);
+        
+        document.getElementById("favorite1").addEventListener("click", addToFavorite(0));
+        document.getElementById("favorite2").addEventListener("click", addToFavorite(1));
+
+        function addToFavorite(carParkOption){
+            onAuthStateChanged(auth2, (user) => {
+                if (user) {
+                    const db2 = getDatabase(app2);
+                    const postListRef = ref(db2, 'favorites/' + user.id);
+                    const newPostRef = push(postListRef);
+                    set(newPostRef, {
+                        coordinates: carParkAvail[carParkOption].geometries[0].coordinates
+                    });
+                } else {
+                    alert("Please sign in to use this function")
+                }
+            });
+        }
         
     </script>
-
-    
     <script src="../control/DisplayCarparks.js">
     </script>
 </html>
