@@ -54,15 +54,6 @@ html, body {
     color: white;
 }
 
-
-#favorite1, #favorite2{
-    background: white;
-    border-radius: 10px;
-    border: none;
-    width: 50px;
-    color: rgb(29, 155, 220)
-}
-
 .optionBar{
     display: flex;
 }

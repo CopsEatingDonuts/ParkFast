@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="FavoriteCarparks.css">
+    <head>
+        <div class="title">
+            <p>Favorites</p>
+        </div>
+    </head>
+    <body>
+        <div class = "carparks">
+        </div>
+    </body>
+    <script type = "module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+        const firebaseConfig = {       
+            apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
+            authDomain: "parkfast-23bd8.firebaseapp.com",
+            databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "parkfast-23bd8",
+            storageBucket: "parkfast-23bd8.appspot.com",
+            messagingSenderId: "333155544674",
+            appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
+            measurementId: "G-5K5M61GXK1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getDatabase();
+        //const userId = auth.currentUser.uid;
+        const dbRef = ref(db, '/favorites/hjvCAdABVqXgMmSjWiPrUhRHme73');
+
+        onValue(dbRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            const childKey = childSnapshot.key;
+            const childData = childSnapshot.val();
+            console.log(typeof(childData));
+        });
+        }, {
+        onlyOnce: true
+        });
+    </script>
+</html>

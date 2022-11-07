@@ -12,7 +12,6 @@ function setColor(btn1, btn2) {
 }
 
 document.getElementById("result_location").innerHTML = sessionStorage.getItem("textvalue");
-var parkingLot = sessionStorage.getItem("textvalue");
 
 function passParkingLot(num){
     sessionStorage.setItem("carparkValue", parkingLot);

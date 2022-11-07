@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@40,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@40,400,0,0" />
     <link rel="stylesheet" href="DisplayCarparks.css">
     <head>
         <p class = "Headings">Available Carparks</p>
@@ -21,9 +20,8 @@
         
         <p id = "parking_location_1"></p>
         <div class = "optionBar">
-            <button class="material-symbols-sharp" id = "favorite1">favorite</button>
-            <form action="DisplayCarparkAvailability.html">
-                <button class="material-symbols-outlined" 
+            <form action="http://127.0.0.1:5500/boundary/DisplayCarparkAvailability.html">
+                <button class="material-symbols-outlined"
                     onclick="passParkingLot(1)">assistant_navigation    
                 </button>
             </form>
@@ -31,9 +29,8 @@
 
         <p id = "parking_location_2"></p>
         <div class = "optionBar">
-            <button class="material-symbols-sharp" id = "favorite2">favorite</button>
-            <form action="DisplayCarparkAvailability.html">
-                <button class="material-symbols-outlined" 
+            <form action="http://127.0.0.1:5500/boundary/DisplayCarparkAvailability.html">
+                <button class="material-symbols-outlined"
                     onclick="passParkingLot(2)">assistant_navigation    
                 </button>
             </form>
@@ -292,38 +289,6 @@
 
         var near_place_lat = sessionStorage.getItem("near_place_lat");
         var near_place_lng = sessionStorage.getItem("near_place_lng");
-        
-        const firebaseConfig2 = {       
-        apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
-        authDomain: "parkfast-23bd8.firebaseapp.com",
-        databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "parkfast-23bd8",
-        storageBucket: "parkfast-23bd8.appspot.com",
-        messagingSenderId: "333155544674",
-        appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
-        measurementId: "G-5K5M61GXK1"
-        };
-
-        const app2 = initializeApp(firebaseConfig2);
-        const auth2 = getAuth(app2);
-        
-        document.getElementById("favorite1").addEventListener("click", addToFavorite(0));
-        document.getElementById("favorite2").addEventListener("click", addToFavorite(1));
-
-        function addToFavorite(carParkOption){
-            onAuthStateChanged(auth2, (user) => {
-                if (user) {
-                    const db2 = getDatabase(app2);
-                    const postListRef = ref(db2, 'favorites/' + user.id);
-                    const newPostRef = push(postListRef);
-                    set(newPostRef, {
-                        coordinates: carParkAvail[carParkOption].geometries[0].coordinates
-                    });
-                } else {
-                    alert("Please sign in to use this function")
-                }
-            });
-        }
         
     </script>
     <script src="../control/DisplayCarparks.js">
