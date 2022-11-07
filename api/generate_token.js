@@ -23,7 +23,7 @@ exec.exec(get_token, function(error, stdout, stderr){
     console.log(new_token);
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
-    
+
     if(error !== null)
     {
         console.log('exec error: ' + error);
