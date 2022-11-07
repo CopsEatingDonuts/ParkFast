@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang = "en">
 
-<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="DisplayCarparkAvailability.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+    
+    <dialog class = "modal" id = "modal">
+        <div class = "container">
+            <p class = "upload">Upload Inaccurate/Missing Data</p>
+            <div class = "button-container">
+            <input type = "file" accept = "image/*" name = "image" class = "box1" id = "box1" style = "display:none" onchange = "loadFile(event)">
+            <label for="box1"><i class="fa fa-camera" style="font-size:48px; cursor:pointer; margin-left: 100px; margin-bottom: 100px; margin-top: 120px;" id = "upload1"></i></label>
+            <div class = "imgbox" id = "imgbox1"></div>
+            </div>
+            <textarea class = "remarks" id = "remarks" rows="5" cols="50" placeholder = "Type remarks here... (eg. Mon - Fri: $1/h)"></textarea>
+        </div>
+        <div class = "con">
+            <button type = submit class = "submit">Submit</button>
+            <button class = "close">Close</button>
+        </div>
+    </dialog>
+   
     <span class = "result" id = "result_carpark"></span>
     <div id='map'></div>
     <div class = "lots_results" >
@@ -34,6 +56,7 @@
         <hr>
     </div>
     <button class="proceed">Proceed</button>
+    <button class = "upload-image">Upload image</button>
     <script src="../control/DisplayCarparkAvailability.js"></script>
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places&callback=initMap" async defer>

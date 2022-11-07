@@ -21,8 +21,8 @@
             </div>
             <div class = "Login-Credentials">
                 <div class = "username">
-                    <p class = "username-header">Username</p>
-                    <input class = "Username-bar" value = "" placeholder = "Username" id = "username">
+                    <p class = "username-header">Email</p>
+                    <input class = "Username-bar" value = "" placeholder = "Email" id = "username">
                     <span id = "usermessage" style = "margin-left:50px; color:red"> </span>
                 </div>
                 <div class="password">
@@ -30,7 +30,7 @@
                     <input type = password class = "Password-bar"  value = "" placeholder = "Password" id = "pswd">
                     <span id = "message" style = "margin-left:50px; color : red"> </span>    
                     <div class = "bottom-row">
-                        <p class = "no-account">Don't have an account? <a href = "http://127.0.0.1:5502/Screens/Sign%20up/signup.html" target = "_self" class = "signup">Sign up here.</a></p>
+                        <p class = "no-account">Don't have an account? <a href = "http://127.0.0.1:5502/Application%20Skeleton/boundary/signup.html" target = "_self" class = "signup">Sign up here.</a></p>
                         <button class = "sign-in" id = "logInButton" type = "submit"> Sign in</button>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     // Signed in 
                     const user = userCredential.user;
                     console.log("signed in");
-                    window.location.href = "http://127.0.0.1:5500/boundary/SearchDestination.html";
+                    window.location.href = "http://127.0.0.1:5502/Application%20Skeleton/boundary/SearchDestination.html";
                     // ...
                 })
                 .catch((error) => {
