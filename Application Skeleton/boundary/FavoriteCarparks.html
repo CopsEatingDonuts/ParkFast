@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" href="FavoriteCarparks.css">
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places" async defer>
+    </script>
     <head>
         <div class="title">
             <p>Favorites</p>
@@ -38,12 +41,23 @@
             const childData = childSnapshot.val();
             const lat = childData.latitude;
             const lng = childData.longitude;
-            console.log(lat);
             var carpark = document.createElement('div');
             carpark.classList.add('location');
             carpark.setAttribute("id", count);
             var carparkLocation = document.createElement('div');
-            carparkLocation.innerText = lat;
+            const latlng = {
+            lat: parseFloat(lat),
+            lng: parseFloat(lng),
+            };
+            const geocoder = new google.maps.Geocoder();
+            geocoder
+            .geocode({ location: latlng })
+            .then((response) => {
+                if (response.results[0]) {
+                    carparkLocation.innerText = response.results[0].formatted_address;
+                }
+            })
+            .catch((e) => window.alert("Geocoder failed due to: " + e));
             carpark.append(carparkLocation);
             var favCarpark = document.getElementById("favoriteCarparks");
             favCarpark.append(carpark);
