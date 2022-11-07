@@ -27,21 +27,26 @@ xhr.onreadystatechange = function () {
       console.log(xhr.responseText);
 
 
-      //retrieve response and convert into a JSON string
-      data = JSON.stringify(xhr.responseText);
+      //retrieve response and convert into a JSON object
+      data = JSON.parse(xhr.responseText);
+
+      console.log(data.Result);
+
+      for (var i=0; i<data.Result.length; i++) {
+        data.Result[i].Address = "URA Car Park";
+      }
+
 
       //implement a check for the response, make sure it's valid
       const test = "Success";
 
-      if (test.localeCompare(JSON.parse(JSON.parse(data)).Status) == 0) {
-        console.log("testOK");  
+      if (test.localeCompare(data.Status) == 0) {
+        console.log("testOK");
+        fs.writeFile('ParkingLotAvailability.json', JSON.stringify(data), (err) => {
+           if (err) throw err;
+           console.log('Parking availability updated');
+        });
       }
-
-      //write this string into a file
-      fs.writeFile('ParkingLotAvailability.json', data, (err) => {
-         if (err) throw err;
-         console.log('Parking availability updated');
-      });
    }};
 
 //execute curl request
@@ -52,11 +57,3 @@ the variable 'dicionary' before printing out dictionary
 
 next time probably wont use this setTimeout if we are splitting the files anyway
 */
-
-
-//setTimeout(function() {console.log(results[0].geometries)}, 2000);
-
-import svy21_to_wgs84 from './svy21_wgs84.js';
-
-var wgs84_new_coords = svy21_to_wgs84(33394.2043, 32909.1642);
-console.log(wgs84_new_coords);

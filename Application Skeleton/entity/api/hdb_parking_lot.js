@@ -20,7 +20,6 @@ xhr.onreadystatechange = function () {
       console.log(xhr.status);
       console.log(xhr.responseText);
 
-
       //retrieve response and convert into a JSON string
       data = JSON.stringify(xhr.responseText);
 }};
