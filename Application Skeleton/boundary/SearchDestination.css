@@ -50,7 +50,7 @@ body.active-popup .popup{
     padding: 10px;
 }
 
-.popup #favorites{
+.popup #favoritesButton{
     text-align:left;
     height: auto;
     border-radius: 5px;

@@ -171,11 +171,9 @@ function svy21_to_wgs84(coords) {
   return wgs84_coords;
 }
 
-//var location_coor = sessionStorage.getItem("near_place_lat") + "," + sessionStorage.getItem("near_place_lng");
 var selected_carpark = sessionStorage.getItem("selected_carpark");
 document.getElementById("result_carpark").innerHTML = selected_carpark;
 
-//var carPark_location = sessionStorage.getItem("carparkValue");
 var wgs84_coords = svy21_to_wgs84([Number(sessionStorage.getItem("near_place_lat")), Number(sessionStorage.getItem("near_place_lng"))]);
 var near_place_lat = wgs84_coords.lat;
 var near_place_lng = wgs84_coords.lon;

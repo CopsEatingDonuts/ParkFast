@@ -90,8 +90,8 @@
                     const postListRef = ref(db, '/favorites/'+ auth.currentUser.uid);
                     const newPostRef = push(postListRef);
                     set(newPostRef, {
-                        latitude: sessionStorage.getItem("near_place_lat"),
-                        longitude: sessionStorage.getItem("near_place_lng")
+                        latitude: near_place_lat,
+                        longitude: near_place_lng
                     });
                     alert("added to favorites");
                 } else {

@@ -17,7 +17,7 @@
             <span id="account"></span>
         </div>
         <div>
-            <button id = "favorites">favorites</button>
+            <button id = "favoritesButton">favorites</button>
         </div>
         <div>
         <button id="signInOut"></button>
@@ -91,6 +91,12 @@
                     window.location.href = "http://127.0.0.1:5500/boundary/login.html";
                 }
             });
+        }
+
+        document.getElementById("favoritesButton").addEventListener("click", goToFavorite);
+
+        function goToFavorite(){
+            window.location.href = "http://127.0.0.1:5500/boundary/FavoriteCarparks.html";
         }
 
     </script>

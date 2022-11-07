@@ -7,7 +7,7 @@
         </div>
     </head>
     <body>
-        <div class = "carparks">
+        <div id = "favoriteCarparks">
         </div>
     </body>
     <script type = "module">
@@ -31,11 +31,22 @@
         //const userId = auth.currentUser.uid;
         const dbRef = ref(db, '/favorites/hjvCAdABVqXgMmSjWiPrUhRHme73');
 
+        var count = 0;
         onValue(dbRef, (snapshot) => {
         snapshot.forEach((childSnapshot) => {
-            const childKey = childSnapshot.key;
+            count += 1;
             const childData = childSnapshot.val();
-            console.log(typeof(childData));
+            const lat = childData.latitude;
+            const lng = childData.longitude;
+            console.log(lat);
+            var carpark = document.createElement('div');
+            carpark.classList.add('location');
+            carpark.setAttribute("id", count);
+            var carparkLocation = document.createElement('div');
+            carparkLocation.innerText = lat;
+            carpark.append(carparkLocation);
+            var favCarpark = document.getElementById("favoriteCarparks");
+            favCarpark.append(carpark);
         });
         }, {
         onlyOnce: true
