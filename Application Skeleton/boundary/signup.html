@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <title>Sign Up</title>
-
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -22,17 +21,17 @@
                 <div class = "username">
                     <p class = "username-header">Email</p>
                     <input class = "Username-bar" type = "text" id = username placeholder = "Email">
-                    <span id = "usermessage" style = "margin-left:50px; color:red"> </span>
+                    <span id = "usermessage" style = "margin-left:100px; color:red; font-size: 26px;"> </span>
                 </div>
                 <div class="password">
                     <p class = "password-header">Password</p>
                     <input type = "password" class = "Password-bar" value = "" placeholder = "Password" id = "pswd1">
-                    <span id = "message1" style = "margin-left:50px; color : red"> </span>
+                    <span id = "message1" style = "margin-left:100px; color : red; font-size: 26px;"> </span>
                     <p class = "Password-strength">Password must contain <span class="req1"> 1. At least 8 characters</span> <span class = "req2">2. Contain at least 1 number</span></p>
                 </div>
                 <p class = "cpassword-header">Confirm Password</p>
                 <input type = "password" class = "CPassword-bar" value = "" placeholder = "Confirm Password" id = "pswd2">
-                <span id = "message2" style = "margin-left:50px; color:red"> </span>
+                <span id = "message2" style = "margin-left:100px; color:red; font-size: 26px;"> </span>
             </div>
             <div class="bottom-row">
                 <p class = "have-account">Already have an account? <a href = "http://127.0.0.1:5502/Application%20Skeleton/boundary/login.html" target = "_self" class = "underline"> Log in.</a></p>
@@ -71,6 +70,7 @@
             .then((userCredential) => {
                 const user = userCredential.user;
                 alert ("Your account has been created successfully");
+                window.location.href = "http://127.0.0.1:5502/Application%20Skeleton/boundary/SearchDestination.html";
             })
             .catch((error) => {
                 const errorCode = error.code;

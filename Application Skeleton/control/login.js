@@ -1,7 +1,7 @@
 function validateLogin(email, pw){
 
     if(email == "") {  
-        document.getElementById("usermessage").innerHTML = "*Enter Username";  
+        document.getElementById("usermessage").innerHTML = "*Enter Email";  
         document.getElementById("message").innerHTML = "";  
         return false;  
     }  

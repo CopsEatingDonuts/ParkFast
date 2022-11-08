@@ -1,5 +1,5 @@
 body {
-    background-image: url('https://st4.depositphotos.com/1302980/26678/v/600/depositphotos_266783454-stock-video-city-map-with-gps-pins.jpg');
+    background-image: url('https://static.vecteezy.com/system/resources/previews/002/222/065/original/abstract-city-map-with-pins-navigation-app-screen-template-vector.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -8,9 +8,9 @@ body {
 
 
 .Login-rectangle{
-    max-width:600px;
-    max-height:500px;
+    max-width:700px;
     width:100%;
+    max-height:1000px;
     height:100%;
     background-color:white;
     position:absolute;
@@ -19,14 +19,14 @@ body {
     transform:translate(-50%,-50%);
     border-radius: 100px;
     border-color: rgb(29, 155, 240);
-    border-width: 3px;
+    border-width: 4px;
     border-style: solid;
 }
 
 .Login{
     margin-top: 50px;
     margin-bottom: 10px;
-    font-size: 50px;
+    font-size: 90px;
     font-weight: bold;
     text-align:center;
 }
@@ -34,64 +34,65 @@ body {
 .Login-Credentials{
     display: grid;
     grid-template-columns: 500px;
-    row-gap: 10px;
+    row-gap: 40px;
 }
 
 .Username-bar,
 .Password-bar{
-    max-width: 500px;
+    max-width: 600px;
     width:100%;
     margin-top: 0px;
     margin-bottom: 0px;
-    margin-left: 50px;
+    margin-left: 100px;
     background-color:rgb(216, 216, 216);
     border-style: hidden;
     border-radius: 3px;
-    height: 40px;
-    font-size:20px;
+    height: 60px;
+    font-size:28px;
 }
 
 .Username-bar::placeholder {
-    font-size: 16px;
+    font-size: 28px;
 }
 
 .Password-bar::placeholder {
-    font-size: 16px;
+    font-size: 28px;
 }
 
 .username-header{
-    margin-left: 50px;
+    margin-left: 100px;
     margin-bottom: 10px;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .password-header{
-    margin-left: 50px;
+    margin-left: 100px;
     margin-bottom: 10px;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .bottom-row{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
 }
 
 .no-account{
-    margin-left: 50px;
+    margin-left: 100px;
     color: rgb(29, 155, 240);
     margin-bottom: 0px;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 30px;
     text-align: left;
 }
 
 .signup{
     color: rgb(29, 155, 240);
     cursor: pointer;
+    display: block;
 }
 
 .signup:hover{
@@ -103,10 +104,11 @@ body {
     opacity: 0.9;
 }
 .sign-in{
-    height: 50px;
-    width: 250px;
-    margin-left: 225px;
+    height: 100px;
+    width: 500px;
+    margin-left: 100px;
     margin-top: 30px;
+    margin-right: 50px;
     background-color: white;
     color: rgb(6,95,212);
     border-color: rgb(6, 95, 212);
@@ -115,8 +117,8 @@ body {
     text-align: center;
     cursor: pointer;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 500;
-    font-size: 18px;
+    font-weight: 700;
+    font-size: 30px;
     transition: box-shadow 0.15s;
     transition: background-color 0.15s, color 0.15s;
 }

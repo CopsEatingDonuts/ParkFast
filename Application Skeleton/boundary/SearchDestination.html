@@ -1,104 +1,109 @@
-<!DOCTYPE><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"><!DOCTYPE html>
-<html lang="en">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-    <link rel="stylesheet" href="SearchDestination.css">
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places" async defer>
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang = 'eng'>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet" href="SearchDestination.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places" async defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="popup">
+            <div>
+                <button id = "closeButton" class="material-symbols-outlined">close</button>
+            </div>
+            <div class = "user">
+                <span id="userLogo" class="material-symbols-outlined">person</span>
+                <span id="account"></span>
+            </div>
+            <div>
+                <button id = "favoritesButton">favorites</button>
+            </div>
+            <div>
+            <button id="signInOut"></button>
+            </div>
+        </div>
+        <div class = "main">
+            <div class="menu">
+                <button id = "openButton" type="button"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            
+            <br>
+            
+            <form class="search_destination" action = "DisplayCarparks.html">
+                <input class = "input_textbox" type = "text" id="dest" placeholder="Enter destination"/>
+                <button class = "search_button" type="submit" onclick="passDestination()" style="float: right;"><i class="fa fa-search"></i></button>
+            </form>
+            
+            <div class="parking_duration">
+                <label class="parking_duration_text">Parking duration</label>
+            </div>
+            
+            <div class = "counter">
+                <input  class = "time_hour" type = "number" placeholder="0">     
+                <label>hours</label>
+                <input  class = "time_minute" type = "number" placeholder="0"> 
+                <label>minutes</label>    
+            </div>
+        </div>
+    </body>
+        <script type = "module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+            import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+            
+            const firebaseConfig = {       
+            apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
+            authDomain: "parkfast-23bd8.firebaseapp.com",
+            databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "parkfast-23bd8",
+            storageBucket: "parkfast-23bd8.appspot.com",
+            messagingSenderId: "333155544674",
+            appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
+            measurementId: "G-5K5M61GXK1"
+            };
     
-    <div class="popup">
-        <div>
-            <button id = "closeButton" class="material-symbols-outlined">close</button>
-        </div>
-        <div class = "user">
-            <span id="userLogo" class="material-symbols-outlined">person</span>
-            <span id="account"></span>
-        </div>
-        <div>
-            <button id = "favoritesButton">favorites</button>
-        </div>
-        <div>
-        <button id="signInOut"></button>
-        </div>
-    </div>
-    <div class = "main">
-        <div class="menu">
-            <button id = "openButton" type="button"><i class="fa-solid fa-bars"></i></button>
-        </div>
-        
-        <br>
-        
-        <form class="search_destination" action = "DisplayCarparks.html">
-            <input class = "input_textbox" type = "text" id="dest" placeholder="Enter destination"/>
-            <button class = "search_button" type="submit" onclick="passDestination()" style="float: right;"><i class="fa fa-search"></i></button>
-        </form>
-        
-        <div class="parking_duration">
-            <label class="parking_duration_text">Parking duration</label>
-        </div>
-        
-        <div class = "counter">
-            <input  class = "time_hour" type = "number" placeholder="0">     
-            <label>hours</label>
-            <input  class = "time_minute" type = "number" placeholder="0"> 
-            <label>minutes</label>    
-        </div>
-    </div>
-    <script type = "module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-        
-        const firebaseConfig = {       
-        apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
-        authDomain: "parkfast-23bd8.firebaseapp.com",
-        databaseURL: "https://parkfast-23bd8-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "parkfast-23bd8",
-        storageBucket: "parkfast-23bd8.appspot.com",
-        messagingSenderId: "333155544674",
-        appId: "1:333155544674:web:5cbbd8995095e3cd4c2b3b",
-        measurementId: "G-5K5M61GXK1"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const userEmail= user.email;
-                document.getElementById("account").innerHTML = userEmail;
-                document.getElementById("signInOut").innerHTML = "log out of account";
-                // ...
-            } else {
-                document.getElementById("account").innerHTML = "Guest";
-                document.getElementById("signInOut").innerHTML = "sign in to your account";
-            }
-        });
-
-        var signInOutButton = document.getElementById("signInOut");
-        signInOutButton.addEventListener("click", signInOrOut);
-        function signInOrOut(){
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth();
+    
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    signOut(auth).then(() => {
-                        window.location.href = "http://127.0.0.1:5500/boundary/SearchDestination.html";
-                        alert("Signed out successfully");
-                    }).catch((error) => {
-                    console.log("error: " + error)
-                    });
+                    const userEmail= user.email;
+                    document.getElementById("account").innerHTML = userEmail;
+                    document.getElementById("signInOut").innerHTML = "log out of account";
+                    // ...
                 } else {
-                    window.location.href = "http://127.0.0.1:5500/boundary/login.html";
+                    document.getElementById("account").innerHTML = "Guest";
+                    document.getElementById("signInOut").innerHTML = "sign in to your account";
                 }
             });
-        }
-
-        document.getElementById("favoritesButton").addEventListener("click", goToFavorite);
-
-        function goToFavorite(){
-            window.location.href = "http://127.0.0.1:5500/boundary/FavoriteCarparks.html";
-        }
-
-    </script>
-    <script src="../control/SearchDestination.js"></script>  
+    
+            var signInOutButton = document.getElementById("signInOut");
+            signInOutButton.addEventListener("click", signInOrOut);
+            function signInOrOut(){
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        signOut(auth).then(() => {
+                            window.location.href = "http://127.0.0.1:5500/boundary/SearchDestination.html";
+                            alert("Signed out successfully");
+                        }).catch((error) => {
+                        console.log("error: " + error)
+                        });
+                    } else {
+                        window.location.href = "http://127.0.0.1:5500/boundary/login.html";
+                    }
+                });
+            }
+    
+            document.getElementById("favoritesButton").addEventListener("click", goToFavorite);
+    
+            function goToFavorite(){
+                window.location.href = "http://127.0.0.1:5500/boundary/FavoriteCarparks.html";
+            }
+    
+        </script>
+        <script src="../control/SearchDestination.js"></script>
 </html>
