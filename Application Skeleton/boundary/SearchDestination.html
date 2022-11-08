@@ -101,7 +101,13 @@
             document.getElementById("favoritesButton").addEventListener("click", goToFavorite);
     
             function goToFavorite(){
-                window.location.href = "http://127.0.0.1:5500/boundary/FavoriteCarparks.html";
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        window.location.href = "http://127.0.0.1:5500/boundary/FavoriteCarparks.html";
+                    } else {
+                        alert("Please sign in to your account");
+                    }
+                });
             }
     
         </script>
