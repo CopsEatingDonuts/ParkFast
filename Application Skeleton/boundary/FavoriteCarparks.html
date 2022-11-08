@@ -31,8 +31,7 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth();
         const db = getDatabase();
-        //const userId = auth.currentUser.uid;
-        const userId = "4RwhMaYiWgfFPwYm0spkiwkZKOS2";
+        const userId = auth.currentUser.uid;
         const dbRef = ref(db, '/favorites/'+userId);
 
         var count = 0;

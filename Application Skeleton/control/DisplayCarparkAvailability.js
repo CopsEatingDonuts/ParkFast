@@ -174,6 +174,8 @@ function svy21_to_wgs84(coords) {
 var selected_carpark_address = sessionStorage.getItem("selected_carpark_address");
 document.getElementById("result_carpark").innerHTML = selected_carpark_address;
 
+var formattedAddress = encodeURIComponent(selected_carpark_address);
+
 var wgs84_coords = svy21_to_wgs84([Number(sessionStorage.getItem("selected_lat")), Number(sessionStorage.getItem("selected_lng"))]);
 var selected_carpark_lat = wgs84_coords.lat;
 var selected_carpark_lng = wgs84_coords.lon;
@@ -227,5 +229,7 @@ closeModal1.addEventListener('click', () => {
   modal.close();
 })
 
-
-    
+document.getElementById("proceedButton").addEventListener("click", navigate);
+function navigate(){
+  window.location.href = "https://www.google.com/maps/search/?api=1&query="+formattedAddress;
+}
