@@ -24,7 +24,7 @@ body {
 .location{
     margin-left: 20px;
     width: 350px;
-    height: auto;
+    height: 35px;
     background: white;
     border-radius: 20px;
 }
@@ -100,6 +100,14 @@ body {
 }
 
 .result{
-    text-align:center;
-    margin-top: 0px;
+    margin-left: 35px;
+    padding: 8.5px 0 0px;
+    width: 320px;
+    height: 20px;
+    overflow-y: hidden;
+}
+
+.material-symbols-sharp{
+    padding: 5.2px 4px 0px;
+    position: absolute;
 }
