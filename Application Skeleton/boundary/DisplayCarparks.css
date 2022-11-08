@@ -1,4 +1,14 @@
-html, body {
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/002/222/065/original/abstract-city-map-with-pins-navigation-app-screen-template-vector.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Roboto, Arial;
     margin: 0;
     padding: 0;
 }
@@ -7,12 +17,13 @@ html, body {
     color: rgb(29, 155, 240);
     font-size: 25px;
     font-weight: 750; 
-    margin-left: 15px;
+    text-align: center;
+    padding-top: 20px;
 }
 
 .location{
-    margin-left: 15px;
-    width: auto;
+    margin-left: 45px;
+    width: 300px;
     height: auto;
     background: white;
     border-radius: 20px;
@@ -23,7 +34,7 @@ html, body {
 }
 
 #button1{
-    margin-left: 15px;
+    margin-left: 34px;
     padding:2px;
     background: rgb(29, 155, 220);
     color: white;
@@ -43,7 +54,7 @@ html, body {
     border-radius: 20px;
     width: 80px;
     font-weight: "normal";
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 .material-symbols-outlined{
@@ -52,8 +63,40 @@ html, body {
     border: none;
     width: 50px;
     color: white;
+    margin-top: 20px;
 }
 
-.optionBar{
+.p-loc{
+    margin-right: 30px;
+}
+
+.container{
     display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    row-gap: 25px;
+    margin-left: 20px;
+    border-bottom-width: 3px;
+    border-style:solid;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    margin-right: 20px;
+}
+
+.big-container{
+    background: white;
+    border-color: rgb(29, 155, 240);
+    border-radius: 15px;
+    border-style:solid;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: absolute;
+    bottom: 220px;
+    height: 400px;
+}
+
+.result{
+    text-align:center;
+    margin-top: 0px;
 }
