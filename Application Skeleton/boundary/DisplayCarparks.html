@@ -39,6 +39,33 @@
             </form>
         </div>
 
+        <p id = "parking_location_3"></p>
+        <div class = "optionBar">
+            <form action="DisplayCarparkAvailability.html">
+                <button class="material-symbols-outlined"
+                    onclick="passParkingLot(2)">assistant_navigation    
+                </button>
+            </form>
+        </div>
+
+        <p id = "parking_location_4"></p>
+        <div class = "optionBar">
+            <form action="DisplayCarparkAvailability.html">
+                <button class="material-symbols-outlined"
+                    onclick="passParkingLot(3)">assistant_navigation    
+                </button>
+            </form>
+        </div>
+
+        <p id = "parking_location_5"></p>
+        <div class = "optionBar">
+            <form action="DisplayCarparkAvailability.html">
+                <button class="material-symbols-outlined"
+                    onclick="passParkingLot(4)">assistant_navigation    
+                </button>
+            </form>
+        </div>
+
     </body>
     <script type = "module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
@@ -63,6 +90,9 @@
             sessionStorage.setItem("dataset", JSON.stringify(carParkAvail));
             document.getElementById("parking_location_1").innerHTML = carParkAvail[0].Address;
             document.getElementById("parking_location_2").innerHTML = carParkAvail[1].Address;
+            document.getElementById("parking_location_3").innerHTML = carParkAvail[2].Address;
+            document.getElementById("parking_location_4").innerHTML = carParkAvail[3].Address;
+            document.getElementById("parking_location_5").innerHTML = carParkAvail[4].Address;
             return;
         } else {
             console.log("No data available");

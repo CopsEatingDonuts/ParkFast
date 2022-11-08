@@ -20,7 +20,8 @@ function passParkingLot(num){
     coords = ((dataset[num].geometries[0].coordinates).split(',').map(Number));
     sessionStorage.setItem("selected_lat", coords[0]);
     sessionStorage.setItem("selected_lng", coords[1]);
-    sessionStorage.setItem("selected_carpark", dataset[num].Address);
+    sessionStorage.setItem("selected_carpark", JSON.stringify(dataset[num]));
+    sessionStorage.setItem("selected_carpark_address", dataset[num].Address);
     sessionStorage.setItem("selected_carpark_lots", dataset[num].carpark_info);
     return;
 }
