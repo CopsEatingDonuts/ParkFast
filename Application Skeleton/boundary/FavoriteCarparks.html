@@ -4,18 +4,18 @@
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places" async defer>
     </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <head>
         <div class="title">
             <p>Favorites</p>
         </div>
     </head>
     <body>
-        <div id = "favoriteCarparks">
-        </div>
+        <div id = "favoriteCarparks"></div>
     </body>
     <script type = "module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+        import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
         const firebaseConfig = {       
             apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
@@ -32,40 +32,94 @@
         const auth = getAuth();
         const db = getDatabase();
         //const userId = auth.currentUser.uid;
-        const dbRef = ref(db, '/favorites/hjvCAdABVqXgMmSjWiPrUhRHme73');
+        const userId = "4RwhMaYiWgfFPwYm0spkiwkZKOS2";
+        const dbRef = ref(db, '/favorites/'+userId);
 
         var count = 0;
-        onValue(dbRef, (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-            count += 1;
-            const childData = childSnapshot.val();
-            const lat = childData.latitude;
-            const lng = childData.longitude;
-            var carpark = document.createElement('div');
-            carpark.classList.add('location');
-            carpark.setAttribute("id", count);
-            var carparkLocation = document.createElement('div');
-            const latlng = {
-            lat: parseFloat(lat),
-            lng: parseFloat(lng),
-            };
-            const geocoder = new google.maps.Geocoder();
-            geocoder
-            .geocode({ location: latlng })
-            .then((response) => {
-                if (response.results[0]) {
-                    carparkLocation.innerText = response.results[0].formatted_address;
-                }
+        const parentData = [];
+        function getLocation(){
+            onValue(dbRef, (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+                count += 1;
+                parentData.push(childSnapshot.key);
+                const childData = childSnapshot.val();
+                const lat = childData.latitude;
+                const lng = childData.longitude;
+                var carparkRow = document.createElement('div');
+                carparkRow.classList.add('location');
+                var carparkLocationAddress = document.createElement('span');
+                const latlng = {
+                lat: parseFloat(lat),
+                lng: parseFloat(lng),
+                };
+                const geocoder = new google.maps.Geocoder();
+                geocoder
+                .geocode({ location: latlng })
+                .then((response) => {
+                    if (response.results[0]) {
+                        carparkLocationAddress.innerHTML = response.results[0].formatted_address;
+                    }
+                })
+                .catch((e) => window.alert("Geocoder failed due to: " + e));
+
+                var removeButton = document.createElement("button");
+                removeButton.setAttribute("id", count);
+                removeButton.className = "removeCarpark";
+                removeButton.innerText = "Remove";
+
+                var navigateButton = document.createElement("button");
+                navigateButton.className = "material-symbols-outlined";
+                navigateButton.innerText = "assistant_navigation";
+
+                carparkRow.append(carparkLocationAddress);
+                carparkRow.append(removeButton);
+                carparkRow.append(navigateButton);
+
+                
+                var favCarpark = document.getElementById("favoriteCarparks");
+                favCarpark.append(carparkRow);
+            });
+            }, {
+            onlyOnce: true
+            });
+
+            return new Promise((resolve, reject) => {
+                let y = 0
+                setTimeout(() => {
+                    for (let i=0; i<10; i++) {
+                    y++
+                    }
+                    console.log('Loop completed.')  
+                    resolve(y)
+                }, 2000)
             })
-            .catch((e) => window.alert("Geocoder failed due to: " + e));
-            carpark.append(carparkLocation);
-            var navigateButton =document.createElement('button');
-            navigateButton.setAttribute("id",count);
-            var favCarpark = document.getElementById("favoriteCarparks");
-            favCarpark.append(carpark);
-        });
-        }, {
-        onlyOnce: true
-        });
+        }
+
+        async function setupRemoveButton(){
+            console.log('Before promise call.')
+            //3. Await for the first function to complete
+            const result = await getLocation()
+            console.log('Promise resolved: ' + result)
+            console.log('Next step.')
+            var removeCarparkButtons = document.getElementsByClassName("removeCarpark");
+            for(var i=0; i < count; i++){
+                var button = removeCarparkButtons[i];
+                button.addEventListener('click', function(event){
+                    var removeButtonClicked = event.target;
+                    var buttonID = event.srcElement.id;
+                    console.log(buttonID);
+                    removeButtonClicked.parentElement.remove();
+                    const toBeDelete = ref(db, '/favorites/' + userId + '/' + parentData[buttonID-1] );
+                    remove(toBeDelete).then(()=>{
+                        console.log("removed");
+                    });
+
+                });
+            }
+        }
+
+        setupRemoveButton();
+
     </script>
+    <script src = "FavoriteCarparks.js"></script>
 </html>

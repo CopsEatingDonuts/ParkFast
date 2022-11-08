@@ -171,16 +171,26 @@ function svy21_to_wgs84(coords) {
   return wgs84_coords;
 }
 
-var selected_carpark = sessionStorage.getItem("selected_carpark");
-document.getElementById("result_carpark").innerHTML = selected_carpark;
+var selected_carpark_address = sessionStorage.getItem("selected_carpark_address");
+document.getElementById("result_carpark").innerHTML = selected_carpark_address;
 
 var wgs84_coords = svy21_to_wgs84([Number(sessionStorage.getItem("selected_lat")), Number(sessionStorage.getItem("selected_lng"))]);
-var near_place_lat = wgs84_coords.lat;
-var near_place_lng = wgs84_coords.lon;
+var selected_carpark_lat = wgs84_coords.lat;
+var selected_carpark_lng = wgs84_coords.lon;
+
+var selected_carpark = JSON.parse(sessionStorage.getItem("selected_carpark"));
+var selected_carpark_info = selected_carpark.carpark_info;
+for (let i=0;i<selected_carpark_info.length;i++) {
+  if ((selected_carpark_info[i].lot_type) == "C")  document.getElementById("num1").innerHTML = selected_carpark_info[i].lots_available;
+  else if ((selected_carpark_info[i].lot_type) == "M")  document.getElementById("num2").innerHTML = selected_carpark_info[i].lots_available;
+  else if ((selected_carpark_info[i].lot_type) == "H")  document.getElementById("num3").innerHTML = selected_carpark_info[i].lots_available;
+
+}
+console.log(selected_carpark.carpark_info[0]);
 
 var map;
 function initMap() {
-    var latlng = new google.maps.LatLng(near_place_lat, near_place_lng);
+    var latlng = new google.maps.LatLng(selected_carpark_lat, selected_carpark_lng);
     var mapOptions = {
       zoom: 15,
       center: latlng

@@ -12,7 +12,7 @@ $(document).ready(function () {
   
  google.maps.event.addListener(autocomplete, 'place_changed', function () {
   var destination = autocomplete.getPlace();
-  //alert(near_place.geometry.location.lat());
+  //alert(destination.geometry.location.lat());
   sessionStorage.setItem("destination_lat", destination.geometry.location.lat());
   sessionStorage.setItem("destination_lng", destination.geometry.location.lng());
  });
