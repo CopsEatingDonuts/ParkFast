@@ -59,6 +59,8 @@
             })
             .catch((e) => window.alert("Geocoder failed due to: " + e));
             carpark.append(carparkLocation);
+            var navigateButton =document.createElement('button');
+            navigateButton.setAttribute("id",count);
             var favCarpark = document.getElementById("favoriteCarparks");
             favCarpark.append(carpark);
         });
