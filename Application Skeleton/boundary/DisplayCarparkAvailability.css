@@ -20,7 +20,7 @@ body{
 }
 
 #map{
-    height: 220px;
+    height: 620px;
     width: 100%;
 }
 .upload{
@@ -153,21 +153,28 @@ body{
     opacity: 0.8;
 }
 .lots_results{
-    position: absolute;
-    bottom: 45px;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .lots_available_text{
-    width: 140px;
-    margin: auto;
     font-size: 20px;
+    text-align: center;
 }
 
 .lots_results .car,.heavy_vehicle{
     background: rgb(29, 155, 220);
 }
+.vehicles,.motorcycle,.heavy_vehicle,.handicap{
+    position:relative;
+}
 
+.num1,.num2,.num3,.num4{
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
 hr{
     border-top: 2px solid rgb(29, 155, 220);
     width: 100%;
