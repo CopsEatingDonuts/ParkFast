@@ -22,8 +22,8 @@ body {
 }
 
 .location{
-    margin-left: 45px;
-    width: 300px;
+    margin-left: 20px;
+    width: 350px;
     height: auto;
     background: white;
     border-radius: 20px;
@@ -34,7 +34,7 @@ body {
 }
 
 #button1{
-    margin-left: 34px;
+    margin-left: 10px;
     padding:2px;
     background: rgb(29, 155, 220);
     color: white;
@@ -67,14 +67,14 @@ body {
 }
 
 .p-loc{
-    margin-right: 30px;
+    flex:1;
 }
 
 .container{
     display: flex;
     flex-direction: row;
-    column-gap: 30px;
     row-gap: 25px;
+    align-self: auto;
     margin-left: 20px;
     border-bottom-width: 3px;
     border-style:solid;
@@ -93,7 +93,10 @@ body {
     margin-right: 10px;
     position: absolute;
     bottom: 220px;
-    height: 400px;
+    max-height: 400px;
+    height: 100%;
+    max-width: 360px;
+    width:100%;
 }
 
 .result{
