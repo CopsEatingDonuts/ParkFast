@@ -1,20 +1,20 @@
 function passDestination(){
-    var dest = document.getElementById("dest").value;
-    sessionStorage.setItem("textvalue", dest);
+    var destination_address = document.getElementById("destination_address").value;
+    sessionStorage.setItem("destination_address", destination_address);
     return;
 }
 
 $(document).ready(function () {
  var autocomplete;
- autocomplete = new google.maps.places.Autocomplete((document.getElementById("dest")), {
+ autocomplete = new google.maps.places.Autocomplete((document.getElementById("destination_address")), {
   componentRestrictions: {'country': ['SG']},
  });
   
  google.maps.event.addListener(autocomplete, 'place_changed', function () {
-  var near_place = autocomplete.getPlace();
+  var destination = autocomplete.getPlace();
   //alert(near_place.geometry.location.lat());
-  sessionStorage.setItem("near_place_lat", near_place.geometry.location.lat());
-  sessionStorage.setItem("near_place_lng", near_place.geometry.location.lng());
+  sessionStorage.setItem("destination_lat", destination.geometry.location.lat());
+  sessionStorage.setItem("destination_lng", destination.geometry.location.lng());
  });
 });
 

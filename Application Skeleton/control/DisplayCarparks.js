@@ -11,15 +11,15 @@ function setColor(btn1, btn2) {
     property2.style.fontWeight = "normal"
 }
 
-var Destination = sessionStorage.getItem("textvalue");
-document.getElementById("result_location").innerHTML = Destination;
+var destination_address = sessionStorage.getItem("destination_address");
+document.getElementById("result_location").innerHTML = destination_address;
 
 function passParkingLot(num){
-    sessionStorage.setItem("carparkValue", Destination);
+    sessionStorage.setItem("carpark_address", destination_address);
     var dataset = JSON.parse(sessionStorage.getItem("dataset"));
     coords = ((dataset[num].geometries[0].coordinates).split(',').map(Number));
-    sessionStorage.setItem("near_place_lat", coords[0]);
-    sessionStorage.setItem("near_place_lng", coords[1]);
+    sessionStorage.setItem("selected_lat", coords[0]);
+    sessionStorage.setItem("selected_lng", coords[1]);
     sessionStorage.setItem("selected_carpark", dataset[num].Address);
     return;
 }
