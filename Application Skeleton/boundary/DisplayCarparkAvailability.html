@@ -93,14 +93,15 @@
         document.getElementById("favoriteButton").addEventListener('click', addToFavorite);
 
         function addToFavorite(){
+            console.log("Adding to favorites...");
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     const db = getDatabase();
                     const postListRef = ref(db, '/favorites/'+ auth.currentUser.uid);
                     const newPostRef = push(postListRef);
                     set(newPostRef, {
-                        latitude: near_place_lat,
-                        longitude: near_place_lng
+                        latitude: selected_carpark_lat,
+                        longitude: selected_carpark_lng
                     });
                     alert("added to favorites");
                 } else {

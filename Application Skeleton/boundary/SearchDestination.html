@@ -68,7 +68,8 @@
     
             const app = initializeApp(firebaseConfig);
             const auth = getAuth();
-    
+            const user = auth.currentUser;
+
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     const userEmail= user.email;
@@ -87,13 +88,13 @@
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         signOut(auth).then(() => {
-                            window.location.href = "http://127.0.0.1:5500/boundary/SearchDestination.html";
+                            window.location.href = "./SearchDestination.html";
                             alert("Signed out successfully");
                         }).catch((error) => {
                         console.log("error: " + error)
                         });
                     } else {
-                        window.location.href = "http://127.0.0.1:5500/boundary/login.html";
+                        window.location.href = "login.html";
                     }
                 });
             }
@@ -103,7 +104,8 @@
             function goToFavorite(){
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
-                        window.location.href = "http://127.0.0.1:5500/boundary/FavoriteCarparks.html";
+                        sessionStorage.setItem("userID", user.uid);
+                        window.location.href = "./FavoriteCarparks.html";
                     } else {
                         alert("Please sign in to your account");
                     }

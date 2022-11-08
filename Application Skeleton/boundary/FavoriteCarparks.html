@@ -29,13 +29,15 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
-        const db = getDatabase();
-        const userId = auth.currentUser.uid;
+        const auth = getAuth(app);
+        const db = getDatabase(app);
+        const userId = sessionStorage.getItem("userID");
+        console.log(userId);
         const dbRef = ref(db, '/favorites/'+userId);
 
         var count = 0;
         const parentData = [];
+        const carparkAddress = [];
         function getLocation(){
             onValue(dbRef, (snapshot) => {
             snapshot.forEach((childSnapshot) => {
@@ -57,6 +59,7 @@
                 .then((response) => {
                     if (response.results[0]) {
                         carparkLocationAddress.innerHTML = response.results[0].formatted_address;
+                        carparkAddress.push(response.results[0].formatted_address);
                     }
                 })
                 .catch((e) => window.alert("Geocoder failed due to: " + e));
@@ -67,6 +70,7 @@
                 removeButton.innerText = "Remove";
 
                 var navigateButton = document.createElement("button");
+                navigateButton.setAttribute("id", count);
                 navigateButton.className = "material-symbols-outlined";
                 navigateButton.innerText = "assistant_navigation";
 
@@ -119,6 +123,17 @@
 
         setupRemoveButton();
 
+        var navigateButtons = document.getElementsByClassName("material-symbols-outlined");
+            for(var i=0; i < count; i++){
+                var directionButton = navigateButtons[i];
+                directionButton.addEventListener('click', function(event){
+                    var directionButtonClicked = event.target;
+                    var directionButtonID = event.srcElement.id;
+                    console.log(directionButtonID);
+                    sessionStorage.setItem("selected_carpark_address", carparkAddress[directionButtonID-1]);
+                    window.location.href = "http://127.0.0.1:5500/boundary/DisplayCarparkAvailability.html";
+                });
+            }
     </script>
     <script src = "FavoriteCarparks.js"></script>
 </html>
