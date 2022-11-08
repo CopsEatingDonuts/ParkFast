@@ -175,12 +175,12 @@ var selected_carpark = sessionStorage.getItem("selected_carpark");
 document.getElementById("result_carpark").innerHTML = selected_carpark;
 
 var wgs84_coords = svy21_to_wgs84([Number(sessionStorage.getItem("selected_lat")), Number(sessionStorage.getItem("selected_lng"))]);
-var near_place_lat = wgs84_coords.lat;
-var near_place_lng = wgs84_coords.lon;
+var selected_carpark_lat = wgs84_coords.lat;
+var selected_carpark_lng = wgs84_coords.lon;
 
 var map;
 function initMap() {
-    var latlng = new google.maps.LatLng(near_place_lat, near_place_lng);
+    var latlng = new google.maps.LatLng(selected_carpark_lat, selected_carpark_lng);
     var mapOptions = {
       zoom: 15,
       center: latlng

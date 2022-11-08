@@ -21,5 +21,6 @@ function passParkingLot(num){
     sessionStorage.setItem("selected_lat", coords[0]);
     sessionStorage.setItem("selected_lng", coords[1]);
     sessionStorage.setItem("selected_carpark", dataset[num].Address);
+    sessionStorage.setItem("selected_carpark_lots", dataset[num].carpark_info);
     return;
 }

@@ -59,7 +59,7 @@
             //snapshot.val() is the database
             var carParkAvail = snapshot.val();
             //console.log(typeof(carParkAvail.Result));
-            var carParkAvail = sortCarParkAvail(carParkAvail.Result, near_place_lat, near_place_lng);
+            var carParkAvail = sortCarParkAvail(carParkAvail.Result, destination_lat, destination_lng);
             sessionStorage.setItem("dataset", JSON.stringify(carParkAvail));
             document.getElementById("parking_location_1").innerHTML = carParkAvail[0].Address;
             document.getElementById("parking_location_2").innerHTML = carParkAvail[1].Address;
@@ -290,8 +290,8 @@
             return dataset;
         }
 
-        var near_place_lat = sessionStorage.getItem("near_place_lat");
-        var near_place_lng = sessionStorage.getItem("near_place_lng");
+        var destination_lat = sessionStorage.getItem("destination_lat");
+        var destination_lng = sessionStorage.getItem("destination_lng");
         
     </script>
     <script src="../control/DisplayCarparks.js">
