@@ -44,10 +44,18 @@
             </div>
             
             <div class = "counter">
-                <input  class = "time_hour" id="Hour" type = "number" onclick="setHour()" placeholder="0">     
-                <label>hours</label>
-                <input  class = "time_minute" id="Minute" type = "number" onclick="setMinute()" placeholder="0"> 
-                <label>minutes</label>    
+                <div id = "hourRow">
+                    <button id = "minusButton" onclick="setHour(false)">-</button>
+                    <label class = "time_hour" id="Hour" type = "number"></label>     
+                    <label>hours</label>
+                    <button id = "plusButton" onclick="setHour(true)">+</button>
+                </div>
+                <div id = "minRow">
+                    <button id = "minusButton" onclick="setMinute(false)">-</button>
+                    <label class = "time_minute" id="Minute" type = "number"></label> 
+                    <label>minutes</label>   
+                    <button id = "plusButton" onclick="setMinute(true)">+</button>
+                </div> 
             </div>
         </div>
     </body>

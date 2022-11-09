@@ -1,19 +1,33 @@
-function setHour() {
-    var x = document.getElementById("Hour");
-    if (x<0)
-        sessionStorage.setItem("Hour", 0);
-    else
-        sessionStorage.setItem("Hour", x.value);
-    return;
+document.getElementById("Hour").innerText = 0;
+document.getElementById("Minute").innerText = 0;
+function setHour(add) {
+    console.log(add);
+    var hourLabel = document.getElementById("Hour");
+    var x = hourLabel.textContent;
+        x = parseInt(x);
+    if (add){
+        hourLabel.innerHTML = x+1;
+    }
+    else{
+        if(x == 0) return;
+        hourLabel.innerHTML = x-1;
+    }
+    sessionStorage.setItem("Hour", parseInt(hourLabel.textContent));
 }
 
-function setMinute() {
-    var x = document.getElementById("Minute");
-    if (x < 0)
-        sessionStorage.setItem("Minute", 0);
-    else
-        sessionStorage.setItem("Minute", x.value);
-    return;
+function setMinute(add) {
+    var minuteLabel = document.getElementById("Minute");
+    var y = minuteLabel.textContent;
+        y = parseInt(y);
+    if (add){
+        if(y == 60) return;
+        minuteLabel.innerHTML = y+30;
+    }
+    else{
+        if(y == 0) return;
+        minuteLabel.innerHTML = y-30;
+    }
+    sessionStorage.setItem("Minute", parseInt(minuteLabel.textContent));
 }
 
 $(document).ready(function () {
