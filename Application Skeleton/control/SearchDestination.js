@@ -1,20 +1,18 @@
-function passDestination(){
-    var destination_address = document.getElementById("destination_address").value;
-    sessionStorage.setItem("destination_address", destination_address);
-    if (sessionStorage.getItem("Hour")==null) sessionStorage.setItem("Hour", 0);
-    if (sessionStorage.getItem("Minute")==null) sessionStorage.setItem("Minute", 0);
-    return;
-}
-
 function setHour() {
     var x = document.getElementById("Hour");
-    sessionStorage.setItem("Hour", x.value);
+    if (x<0)
+        sessionStorage.setItem("Hour", 0);
+    else
+        sessionStorage.setItem("Hour", x.value);
     return;
 }
 
 function setMinute() {
     var x = document.getElementById("Minute");
-    sessionStorage.setItem("Minute", x.value);
+    if (x < 0)
+        sessionStorage.setItem("Minute", 0);
+    else
+        sessionStorage.setItem("Minute", x.value);
     return;
 }
 
@@ -41,6 +39,8 @@ $(document).ready(function () {
             console.log(destination_address);
             sessionStorage.setItem("destination_address", destination_address);
             window.location.href = "DisplayCarparks.html";
+            if (sessionStorage.getItem("Hour")==null) sessionStorage.setItem("Hour", 0);
+            if (sessionStorage.getItem("Minute")==null) sessionStorage.setItem("Minute", 0);
         }
     });
   
