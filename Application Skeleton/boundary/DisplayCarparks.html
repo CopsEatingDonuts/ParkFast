@@ -138,11 +138,6 @@
 
         function showNearest(){
             carParkAvail = sortCarParkAvail(carParkAvail, destination_lat, destination_lng);
-            ev.style.display= "none";
-            ev1.style.display= "none";
-            ev2.style.display= "none";
-            ev3.style.display= "none";
-            ev4.style.display= "none";
             document.getElementById("parking_location_1").innerHTML = carParkAvail[0].Address + " (" + calcDistance(carParkAvail[0], destination_lat, destination_lng).toFixed(2) + "km)";
             document.getElementById("parking_location_2").innerHTML = carParkAvail[1].Address + " (" + calcDistance(carParkAvail[1], destination_lat, destination_lng).toFixed(2) + "km)";
             document.getElementById("parking_location_3").innerHTML = carParkAvail[2].Address + " (" + calcDistance(carParkAvail[2], destination_lat, destination_lng).toFixed(2) + "km)";
@@ -172,11 +167,6 @@
             var top5_nearest = carParkAvail.slice(0,5);
             var after_top5 = carParkAvail.slice(5,);
             var sorted_avail_carparks = sortAvails(top5_nearest);
-            ev.style.display= "none";
-            ev1.style.display= "none";
-            ev2.style.display= "none";
-            ev3.style.display= "none";
-            ev4.style.display= "none";
             document.getElementById("parking_location_1").innerHTML = sorted_avail_carparks[0].Address + " (" + sorted_avail_carparks[0].carpark_info[0].lots_available + " Car lots)";
             document.getElementById("parking_location_2").innerHTML = sorted_avail_carparks[1].Address + " (" + sorted_avail_carparks[1].carpark_info[0].lots_available + " Car lots)";
             document.getElementById("parking_location_3").innerHTML = sorted_avail_carparks[2].Address + " (" + sorted_avail_carparks[2].carpark_info[0].lots_available + " Car lots)";
