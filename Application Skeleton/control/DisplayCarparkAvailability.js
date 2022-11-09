@@ -223,7 +223,6 @@ var loadFile = function(event){
 
 const openModal = document.querySelector('.upload-image');
 const closeModal = document.querySelector('.close');
-const closeModal1 = document.querySelector('.submit');
 const modal = document.querySelector('#modal');
 
 openModal.addEventListener('click', () => {
@@ -234,9 +233,6 @@ closeModal.addEventListener('click', () => {
   modal.close();
 })
 
-closeModal1.addEventListener('click', () => {
-  modal.close();
-})
 
 document.getElementById("proceedButton").addEventListener("click", navigate);
 function navigate(){
@@ -253,3 +249,15 @@ var satdayRate = "satdayRate : " + parkingRates.satdayRate + "/" + satdayMin + "
 var sunPHMin = parkingRates.sunPHMin;
 var sunPHRate = "sunPHRate : " + parkingRates.sunPHRate + "/" + sunPHMin;
 carparkRate.innerHTML = weekdayRate + satdayRate + sunPHRate;
+
+function validateForm2() {
+  //check empty first name field 
+  var remark = document.getElementById("remarks").value; 
+  if(remark == "") {  
+    document.getElementById("message").innerHTML = "*Enter remarks";  
+    return false;  
+  }
+  alert("Image has been uploaded successfully!")
+  modal.close();
+  return true;
+}
