@@ -27,3 +27,5 @@ a webapp to enhance parking experience of drivers
 @serphyshio - Frontend and database implementation
 
 @Player999058 - Frontend and logical functions
+
+@glenda-lee - Documentation
