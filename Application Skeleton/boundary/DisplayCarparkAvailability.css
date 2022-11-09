@@ -122,6 +122,7 @@ body{
     border-style: hidden;
     border-radius: 3px;
     font-size:20px;
+    outline: none;
 }
 .con{
     display: flex;

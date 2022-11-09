@@ -96,8 +96,11 @@ button{
 
 .search_destination .input_textbox{
     width: 260px;
-    border: none;
-    
+}
+
+.input_textbox{
+    border-style: none;
+    outline: none;
 }
 
 .search_destination .search_button:active{

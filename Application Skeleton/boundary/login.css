@@ -49,6 +49,7 @@ body {
     border-radius: 3px;
     height: 60px;
     font-size:28px;
+    outline:none;
 }
 
 .Username-bar::placeholder {

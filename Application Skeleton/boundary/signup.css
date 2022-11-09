@@ -50,6 +50,7 @@ body {
     border-radius: 3px;
     height: 60px;
     font-size:26px;
+    outline: none;
 }
 
 .Username-bar::placeholder {
