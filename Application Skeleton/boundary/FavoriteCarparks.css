@@ -1,9 +1,20 @@
 body {
+    font-family: Roboto, Arial;
     background-image: url('https://static.vecteezy.com/system/resources/previews/002/222/065/original/abstract-city-map-with-pins-navigation-app-screen-template-vector.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    font-family: Roboto, Arial;
+}
+
+.fav-car{
+    background:white;
+    border-radius: 10px;
+    border-color: rgb(29, 155, 240);
+    border-width: 4px;
+    border-style: solid;
+    padding-left: 15px;
+    margin-top: 15px;
+    padding-bottom: 15px;
 }
 
 .title{
@@ -49,12 +60,11 @@ body {
 .removeCarpark{
     font-size: 30px;
     margin-bottom: 15px;
-    background-color:white;
-    border-color: rgb(29, 155, 240);
-    color:rgb(29, 155, 220);
+    background-color:#FF0000;
+    color:white;
     font-weight: 700;
     border-width: 3px;
-    border-style: solid;
+    border-style: none;
     border-radius: 5px;
     transition: background-color 0.15s, color 0.15s;
 }
@@ -62,8 +72,8 @@ body {
 .material-symbols-outlined{
     margin-bottom: 15px;
     background-color:white;
-    border-color: rgb(29, 155, 240);
-    color:rgb(29, 155, 220);
+    border-color: #049B4A;
+    color:#049B4A;
     font-weight: 700;
     border-width: 3px;
     border-style: solid;
@@ -71,8 +81,8 @@ body {
     transition: background-color 0.15s, color 0.15s;
 }
 
-.material-symbols-outlined:hover, .removeCarpark:hover{
-    background-color: rgb(29, 155, 240);
+.material-symbols-outlined:hover{
+    background-color: #049B4A;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     color: white;
 }

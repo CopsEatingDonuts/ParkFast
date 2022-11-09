@@ -63,7 +63,7 @@ body {
     border: none;
     width: 50px;
     color: white;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .p-loc{
@@ -74,14 +74,16 @@ body {
     display: flex;
     flex-direction: row;
     row-gap: 25px;
+    column-gap: 20px;;
     align-self: auto;
     margin-left: 20px;
+    align-content: flex-start;
     border-bottom-width: 3px;
     border-style:solid;
     border-top-width: 0px;
     border-left-width: 0px;
     border-right-width: 0px;
-    margin-right: 20px;
+    margin-right: 20px
 }
 
 .big-container{

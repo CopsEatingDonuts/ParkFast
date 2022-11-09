@@ -73,11 +73,10 @@ body{
     width:150px;
     height: 32px;
     font-weight: 700;
-    background-color:white;
-    border-color: rgb(29, 155, 240);
-    color:rgb(29, 155, 220);
+    background-color:rgb(35,134,54);
+    color:white;
     border-width: 3px;
-    border-style: solid;
+    border-style: none;
     border-radius: 5px;
     transition: background-color 0.15s, color 0.15s;
 }
@@ -100,15 +99,21 @@ body{
     transition: background-color 0.15s, color 0.15s;
 }
 
-.upload-image:hover,
-.proceed:hover{
+.upload-image:hover{
     background-color: rgb(29, 155, 240);
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     color: white;
 }
 
-.upload-image:active, 
+.proceed:hover{
+    opacity: 0.6;
+}
+
 .proceed:active{
+    opacity: 0.95;
+}
+
+.upload-image:active{
     opacity: 0.8;
 }
 
@@ -147,7 +152,7 @@ body{
 .close{
     margin-right : 18px;
 }
-.close:hover, .submit:hover, #favoriteButton:hover{
+.close:hover, .submit:hover{
     background-color: rgb(29, 155, 240);
     box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
     color: white;
@@ -191,18 +196,27 @@ hr{
     background: white;
     border-radius: 10px;
     border: none;
-    width: 50px;
-    color: rgb(29, 155, 220);
+    width: 32px;
+    height:32px;
+    color: #FF0000;
     position: absolute;
     bottom: 9px;
-    left: 3%;
+    left: 15px;
     background-color:white;
-    border-color: rgb(29, 155, 240);
-    border-width: 3px;
+    border-color: white;
+    border-width: 1px;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: 16px;
     transition: background-color 0.15s, color 0.15s;
     cursor: pointer;
+    text-align: center;
+}
+
+#favoriteButton:hover{
+    background-color: #FF0000;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
+    color: white;
+    padding-right:28px;
 }
 
 .result{
