@@ -20,7 +20,7 @@ function setMinute(add) {
     var y = minuteLabel.textContent;
         y = parseInt(y);
     if (add){
-        if(y == 60) return;
+        if(y == 30) return;
         minuteLabel.innerHTML = y+30;
     }
     else{

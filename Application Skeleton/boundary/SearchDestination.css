@@ -140,8 +140,15 @@ button{
     border-color: rgb(29, 155, 240);
     border-width: 2px;
     border-style: solid;
+    font-size: 20px;
 }
 
+#hourRow{
+    margin-left: 25px;
+}
+#minRow{
+    margin-left: 20px;
+}
 
 .counter .time_hour{
     width: 90px;
