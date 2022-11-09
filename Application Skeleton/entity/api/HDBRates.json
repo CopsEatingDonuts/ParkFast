@@ -1,0 +1,51 @@
+{"car":{
+  "hdbCentralRates":{
+    "weekdayMin":"30 mins",
+    "weekdayRate":"$1.20",
+    "vehCat":"Car",
+    "satdayMin":"30 mins",
+    "satdayRate":"$1.20",
+    "sunPHMin":"30 mins",
+    "sunPHRate":"$0.60",
+    "startTime":"7.00 AM",
+    "endTime":"05.00 PM",
+    "remarks":"Parking charge between 10.30pm & 7am is capped at $5. Short-term parking is not available at car parks without the Night Parking Scheme."
+  },
+  "hdbOutsideRates":{
+    "weekdayMin":"30 mins",
+    "weekdayRate":"$0.60",
+    "vehCat":"Car",
+    "satdayMin":"30 mins",
+    "satdayRate":"$0.60",
+    "sunPHMin":"30 mins",
+    "sunPHRate":"$0.60",
+    "startTime":"7.00 AM",
+    "endTime":"05.00 PM",
+    "remarks":"Parking charge between 10.30pm & 7am is capped at $5. Short-term parking is not available at car parks without the Night Parking Scheme."
+  }
+},
+"motorbike":{
+  "hdbCentralRates":{
+    "weekdayMin":"Full day",
+    "weekdayRate":"$0.65",
+    "vehCat":"Motorbike",
+    "satdayMin":"Full day",
+    "satdayRate":"$0.65",
+    "sunPHMin":"Full day",
+    "sunPHRate":"$0.65",
+    "startTime":"0.00 AM",
+    "endTime":"0.00 PM"
+  },
+  "hdbOutsideRates" : {
+    "weekdayMin": "Full day",
+    "weekdayRate": "$0.65",
+    "vehCat": "Motorbike",
+    "satdayMin": "Full day",
+    "satdayRate": "$0.65",
+    "sunPHMin": "Full day",
+    "sunPHRate": "$0.65",
+    "startTime": "0.00 AM",
+    "endTime": "0.00 PM"
+  }
+}
+}
