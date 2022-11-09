@@ -201,8 +201,6 @@ catch (err) {}
 
 var map;
 function initMap() {
-    console.log(selected_carpark_lat_wgs84);
-    console.log(selected_carpark_lng_wgs84);
     var latlng = new google.maps.LatLng(selected_carpark_lat_wgs84, selected_carpark_lng_wgs84);
     var mapOptions = {
       zoom: 15,
@@ -250,4 +248,4 @@ var parkingRates = selected_carpark.parkingRate[0];
 var satdayRate = "satdayRate : " + parkingRates.satdayRate + " || ";
 var sunPHRate = "sunPHRate : " + parkingRates.sunPHRate + " || ";
 var weekdayRate = "weekdayRate : " + parkingRates.weekdayRate + " || ";
-carparkRate.innerHTML = JSON.stringify(weekdayRate + satdayRate + sunPHRate);
+carparkRate.innerHTML = weekdayRate + satdayRate + sunPHRate;
