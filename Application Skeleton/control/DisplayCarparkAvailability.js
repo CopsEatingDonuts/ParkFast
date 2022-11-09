@@ -250,6 +250,10 @@ var sunPHMin = parkingRates.sunPHMin;
 var sunPHRate = "sunPHRate : " + parkingRates.sunPHRate + "/" + sunPHMin;
 carparkRate.innerHTML = weekdayRate + satdayRate + sunPHRate;
 
+var EstimatedRate = document.getElementById("EstimatedRate");
+var cost = (Number(sessionStorage.getItem("Hour"))*2 + Math.ceil(Number(sessionStorage.getItem("Minute"))/30)) * Number((parkingRates.weekdayRate).slice(1,));
+EstimatedRate.innerHTML = "Estimated cost of parking: $"+cost.toFixed(2);
+
 function validateForm2() {
   //check empty first name field 
   var remark = document.getElementById("remarks").value; 

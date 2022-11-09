@@ -1,3 +1,23 @@
+function passDestination(){
+    var destination_address = document.getElementById("destination_address").value;
+    sessionStorage.setItem("destination_address", destination_address);
+    if (sessionStorage.getItem("Hour")==null) sessionStorage.setItem("Hour", 0);
+    if (sessionStorage.getItem("Minute")==null) sessionStorage.setItem("Minute", 0);
+    return;
+}
+
+function setHour() {
+    var x = document.getElementById("Hour");
+    sessionStorage.setItem("Hour", x.value);
+    return;
+}
+
+function setMinute() {
+    var x = document.getElementById("Minute");
+    sessionStorage.setItem("Minute", x.value);
+    return;
+}
+
 $(document).ready(function () {
     var destination;
     var autocomplete;
