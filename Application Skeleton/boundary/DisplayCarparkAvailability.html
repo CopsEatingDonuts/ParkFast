@@ -100,6 +100,8 @@
                     const postListRef = ref(db, '/favorites/'+ auth.currentUser.uid);
                     const newPostRef = push(postListRef);
                     set(newPostRef, {
+                        address_name: formattedAddress;
+                        carpark: JSON.stringify(selected_carpark),
                         latitude: selected_carpark_lat,
                         longitude: selected_carpark_lng,
                         latitude_wgs84: selected_carpark_lat_wgs84,
