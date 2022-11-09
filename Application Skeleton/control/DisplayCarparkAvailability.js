@@ -240,19 +240,24 @@ function navigate(){
 }
 
 var carparkRate = document.getElementById("carParkRate");
+var carparkRate2 = document.getElementById("carParkRate2");
+var carparkRate1 = document.getElementById("carParkRate1");
 
 var parkingRates = selected_carpark.parkingRate[0];
 var weekdayMin = parkingRates.weekdayMin;
-var weekdayRate = "weekdayRate : " + parkingRates.weekdayRate + "/" + weekdayMin + " || ";
+var weekdayRate = "Weekday Rate : " + parkingRates.weekdayRate + "/" + weekdayMin;
 var satdayMin = parkingRates.satdayMin;
-var satdayRate = "satdayRate : " + parkingRates.satdayRate + "/" + satdayMin + " || ";
+var satdayRate = "Sat Rate : " + parkingRates.satdayRate + "/" + satdayMin;
 var sunPHMin = parkingRates.sunPHMin;
-var sunPHRate = "sunPHRate : " + parkingRates.sunPHRate + "/" + sunPHMin;
-carparkRate.innerHTML = weekdayRate + satdayRate + sunPHRate;
+var sunPHRate = "Sunday & PH Rate : " + parkingRates.sunPHRate + "/" + sunPHMin;
+carparkRate.innerHTML = weekdayRate;
+carparkRate1.innerHTML = satdayRate;
+carparkRate2.innerHTML = sunPHRate;
 
 var EstimatedRate = document.getElementById("EstimatedRate");
 var cost = (Number(sessionStorage.getItem("Hour"))*2 + Math.ceil(Number(sessionStorage.getItem("Minute"))/30)) * Number((parkingRates.weekdayRate).slice(1,));
 EstimatedRate.innerHTML = "Estimated cost of parking: $"+cost.toFixed(2);
+
 
 function validateForm2() {
   //check empty first name field 

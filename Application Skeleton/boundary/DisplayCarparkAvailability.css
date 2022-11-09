@@ -20,7 +20,7 @@ body{
 }
 
 #map{
-    height: 570px;
+    height: 500px;
     width: 100%;
 }
 .upload{
@@ -212,15 +212,24 @@ hr{
     text-align: center;
 }
 
-#favoriteButton:hover{
-    background-color: #FF0000;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.15);
-    color: white;
-    padding-right:28px;
-}
 
 .result{
     text-align:center;
     font-size: 12px;
     font-weight: 600;
+}
+
+.weekday{
+    display:block;
+}
+
+.carparkContainer{
+    display: grid;
+    grid-template-rows: 30px 30px 30px;
+}
+
+.carparkRate, .carparkRate1, .carparkRate2{
+    margin-top:-30px;
+    margin-bottom: 0px;
+    height: 10px;
 }
