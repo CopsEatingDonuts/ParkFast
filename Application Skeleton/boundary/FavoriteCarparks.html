@@ -66,18 +66,8 @@
                 };
                 carparkCoordinates.push(latlng);
                 carparks.push(carpark);
-
-                const geocoder = new google.maps.Geocoder();
-                geocoder
-                .geocode({ location: latlng_wgs84 })
-                .then((response) => {
-                    if (response.results[0]) {
-                        carparkLocationAddress.innerHTML = response.results[0].formatted_address;
-                        console.log(count + " " + carparkLocationAddress.innerHTML);
-                        carparkAddress.push(carparkLocationAddress.innerHTML);
-                    }
-                })
-                .catch((e) => window.alert("Geocoder failed due to: " + e));
+                carparkAddress.push(childData.address_name);
+                carparkLocationAddress.innerHTML = childData.address_name;
                 
                 var removeButton = document.createElement("button");
                 removeButton.setAttribute("id", count);

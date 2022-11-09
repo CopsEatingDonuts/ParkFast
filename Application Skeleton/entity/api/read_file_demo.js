@@ -4,7 +4,7 @@ import { getDatabase, ref, child, get, push, update, set } from "firebase/databa
 
 import fs from 'fs';
 
-let rawdata = fs.readFileSync('Application Skeleton/entity/api/FinalDataSet.json');
+let rawdata = fs.readFileSync('Application Skeleton/entity/api/AvailabilityWithRates.json');
 console.log(typeof(rawdata));
 var carParkAvail = JSON.parse(rawdata);
 //console.log(carParkAvail);
