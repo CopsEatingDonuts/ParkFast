@@ -76,6 +76,7 @@ body {
     width: 50px;
     color: white;
     margin-top: 15px;
+    height:30px;
 }
 
 .p-loc{
@@ -106,8 +107,8 @@ body {
     margin-left: 10px;
     margin-right: 10px;
     position: absolute;
-    bottom: 220px;
-    max-height: 400px;
+    bottom: 120px;
+    max-height: 500px;
     height: 100%;
     max-width: 360px;
     width:100%;
@@ -124,4 +125,15 @@ body {
 .material-symbols-sharp{
     padding: 5.2px 4px 0px;
     position: absolute;
+}
+
+.ev, .ev1, .ev2, .ev3, .ev4{
+    width: 50px;
+    margin-top:15px;
+    margin-bottom: 15px;
+    height: 30px;
+    border-radius: 10px;
+    border-style: none;
+    background:white;
+    margin-left: -40px;
 }
