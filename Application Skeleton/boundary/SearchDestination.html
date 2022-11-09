@@ -21,10 +21,10 @@
                 <span id="account"></span>
             </div>
             <div>
-                <button id = "favoritesButton">favorites</button>
+                <button class = "fav" id = "favoritesButton">favorites</button>
             </div>
             <div>
-            <button id="signInOut"></button>
+            <button class = "signOut" id="signInOut"></button>
             </div>
         </div>
         <div class = "main">
@@ -88,7 +88,7 @@
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         signOut(auth).then(() => {
-                            window.location.href = "./SearchDestination.html";
+                            window.location.href = "http://127.0.0.1:5502/Application%20Skeleton/boundary/login.html";
                             alert("Signed out successfully");
                         }).catch((error) => {
                         console.log("error: " + error)

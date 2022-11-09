@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" href="FavoriteCarparks.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRg28b9JC7M-Cu6LzKX3VxflWfAaH8a2k&libraries=places" async defer>
     </script>
@@ -11,7 +14,7 @@
         </div>
     </head>
     <body>
-        <div id = "favoriteCarparks"></div>
+        <div  class = "fav-car" id = "favoriteCarparks"></div>
     </body>
     <script type = "module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
@@ -49,6 +52,7 @@
                 var carparkRow = document.createElement('div');
                 carparkRow.classList.add('location');
                 var carparkLocationAddress = document.createElement('span');
+                carparkLocationAddress.classList.add('carparkLocationAddress');
                 const latlng = {
                 lat: parseFloat(lat),
                 lng: parseFloat(lng),
@@ -73,6 +77,7 @@
                 navigateButton.setAttribute("id", count);
                 navigateButton.className = "material-symbols-outlined";
                 navigateButton.innerText = "assistant_navigation";
+                navigateButton.style.fontSize = "48px";
 
                 carparkRow.append(carparkLocationAddress);
                 carparkRow.append(removeButton);

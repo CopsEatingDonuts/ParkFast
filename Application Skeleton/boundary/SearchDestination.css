@@ -152,3 +152,16 @@ button{
     padding: 3px;
     border-radius: 10px;
 }
+
+#openButton{
+    cursor:pointer;
+}
+
+.user{
+    display: grid;
+    grid-template-columns: 30px 1fr;
+}
+
+#account{
+    padding-top: 2px;
+}
