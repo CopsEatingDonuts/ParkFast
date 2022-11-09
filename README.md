@@ -17,7 +17,8 @@ a webapp to enhance parking experience of drivers
 ## Other data sources:
 1. Shell Singapore
 2. OneMotoring
-3. HDB
+3. MotoristSG
+4. HDB
 
 # Contributors:
 @CopsEatingDonuts - Backend API implmentation and data wrangling
