@@ -20,9 +20,13 @@ var destination_address = sessionStorage.getItem("destination_address");
 document.getElementById("result_location").innerHTML = destination_address;
 
 function passParkingLot(num){
-    sessionStorage.setItem("carpark_address", destination_address);
-    var dataset = JSON.parse(sessionStorage.getItem("dataset"));
-    coords = ((dataset[num].geometries[0].coordinates).split(',').map(Number));
+    var dataset = (JSON.parse(sessionStorage.getItem("dataset")));
+    try {
+        coords = ((dataset[num].geometries[0].coordinates).split(',').map(Number));
+    }
+    catch (err) {
+        coords = ((dataset[num].Coordinates).split(',').map(Number));
+    }
     sessionStorage.setItem("selected_lat", coords[0]);
     sessionStorage.setItem("selected_lng", coords[1]);
     sessionStorage.setItem("selected_carpark", JSON.stringify(dataset[num]));

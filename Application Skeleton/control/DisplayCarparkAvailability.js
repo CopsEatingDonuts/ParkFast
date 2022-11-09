@@ -177,6 +177,12 @@ document.getElementById("result_carpark").innerHTML = selected_carpark_address;
 var formattedAddress = encodeURIComponent(selected_carpark_address);
 
 var wgs84_coords = svy21_to_wgs84([Number(sessionStorage.getItem("selected_lat")), Number(sessionStorage.getItem("selected_lng"))]);
+if (Number(sessionStorage.getItem("selected_lat"))<2) {
+    wgs84_coords = {
+      lat: Number(sessionStorage.getItem("selected_lat")),
+      lon: Number(sessionStorage.getItem("selected_lng"))
+  }
+}
 var selected_carpark_lat = Number(sessionStorage.getItem("selected_lat"));
 var selected_carpark_lng = Number(sessionStorage.getItem("selected_lng"));
 var selected_carpark_lat_wgs84 = wgs84_coords.lat;
@@ -184,13 +190,14 @@ var selected_carpark_lng_wgs84 = wgs84_coords.lon;
 
 var selected_carpark = JSON.parse(sessionStorage.getItem("selected_carpark"));
 var selected_carpark_info = selected_carpark.carpark_info;
-for (let i=0;i<selected_carpark_info.length;i++) {
-  if ((selected_carpark_info[i].lot_type) == "C")  document.getElementById("num1").innerHTML = selected_carpark_info[i].lots_available;
-  else if ((selected_carpark_info[i].lot_type) == "M")  document.getElementById("num2").innerHTML = selected_carpark_info[i].lots_available;
-  else if ((selected_carpark_info[i].lot_type) == "H")  document.getElementById("num3").innerHTML = selected_carpark_info[i].lots_available;
-
+try {
+  for (let i=0;i<selected_carpark_info.length;i++) {
+    if ((selected_carpark_info[i].lot_type) == "C")  document.getElementById("num1").innerHTML = selected_carpark_info[i].lots_available;
+    else if ((selected_carpark_info[i].lot_type) == "M")  document.getElementById("num2").innerHTML = selected_carpark_info[i].lots_available;
+    else if ((selected_carpark_info[i].lot_type) == "H")  document.getElementById("num3").innerHTML = selected_carpark_info[i].lots_available;
+  }
 }
-console.log(selected_carpark.carpark_info[0]);
+catch (err) {}
 
 var map;
 function initMap() {
