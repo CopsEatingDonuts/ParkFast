@@ -201,7 +201,11 @@ catch (err) {}
 
 var map;
 function initMap() {
+    console.log(selected_carpark_lat_wgs84);
+    console.log(selected_carpark_lng_wgs84);
     var latlng = new google.maps.LatLng(selected_carpark_lat_wgs84, selected_carpark_lng_wgs84);
+    console.log(latlng1);
+    console.log(latlng);
     var mapOptions = {
       zoom: 15,
       center: latlng
@@ -209,9 +213,46 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
     
     var marker = new google.maps.Marker({
-    position: latlng,
-    map,
+      position: latlng,
+      map: map
     });
+
+      var latlng1 = new google.maps.LatLng(selected_carpark_lat_wgs84+1, selected_carpark_lng_wgs84);
+      var latlng2 = new google.maps.LatLng(selected_carpark_lat_wgs84, selected_carpark_lng_wgs84+1);
+      var latlng3 = new google.maps.LatLng(selected_carpark_lat_wgs84+1, selected_carpark_lng_wgs84+1);
+      var latlng4 = new google.maps.LatLng(selected_carpark_lat_wgs84-1, selected_carpark_lng_wgs84+1);
+      var latlng5 = new google.maps.LatLng(selected_carpark_lat_wgs84, selected_carpark_lng_wgs84-1); 
+
+      var marker = new google.maps.Marker({
+        position: latlng1,
+        map: map,
+        icon: "http://maps.google.com/mapfiles/kml/shapes/gas_stations.png",
+        title: "Hello World!",
+      });
+
+      var marker = new google.maps.Marker({
+        position: latlng2,
+        map: map,
+        title: "Hello World!",
+      });
+
+      var marker = new google.maps.Marker({
+        position: latlng3,
+        map: map,
+        title: "Hello World!",
+      });
+
+      var marker = new google.maps.Marker({
+        position: latlng4,
+        map: map,
+        title: "Hello World!",
+      });
+
+      var marker = new google.maps.Marker({
+        position: latlng5,
+        map: map,
+        title: "Hello World!",
+      });
 }
 
 var imgBox1 = document.getElementById("imgbox1");

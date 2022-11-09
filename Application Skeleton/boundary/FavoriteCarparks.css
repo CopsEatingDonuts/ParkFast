@@ -9,7 +9,7 @@ body {
 .fav-car{
     background:white;
     border-radius: 10px;
-    border-color: rgb(29, 155, 240);
+    border-color: rgb(162, 165, 241);
     border-width: 4px;
     border-style: solid;
     padding-left: 15px;
@@ -89,4 +89,11 @@ body {
 
 .material-symbols-outlined:active, .removeCarpark:active{
     opacity: 0.8;
+}
+
+.NoData {
+    font-size: 50px;
+    margin-bottom: 45px;
+    text-align: center;
+    font-weight: 500;
 }

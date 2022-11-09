@@ -104,8 +104,6 @@
             })
         }
 
-
-
         async function setupButtons(){
             console.log('Before promise call.')
             //3. Await for the first function to complete
@@ -140,6 +138,13 @@
                     sessionStorage.setItem("selected_lng", parseFloat(carparkCoordinates[directionButtonID-1].lng));
                     window.location.href = "DisplayCarparkAvailability.html";
                 });
+            }
+
+            if (count == 0 ){
+                var noData = document.createElement("p");
+                noData.className = "NoData";
+                noData.innerText = "No favorite carparks";
+                document.getElementById("favoriteCarparks").append(noData);
             }
         }
 
