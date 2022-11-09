@@ -244,8 +244,12 @@ function navigate(){
 }
 
 var carparkRate = document.getElementById("carParkRate");
+
 var parkingRates = selected_carpark.parkingRate[0];
-var satdayRate = "satdayRate : " + parkingRates.satdayRate + " || ";
-var sunPHRate = "sunPHRate : " + parkingRates.sunPHRate + " || ";
-var weekdayRate = "weekdayRate : " + parkingRates.weekdayRate + " || ";
+var weekdayMin = parkingRates.weekdayMin;
+var weekdayRate = "weekdayRate : " + parkingRates.weekdayRate + "/" + weekdayMin + " || ";
+var satdayMin = parkingRates.satdayMin;
+var satdayRate = "satdayRate : " + parkingRates.satdayRate + "/" + satdayMin + " || ";
+var sunPHMin = parkingRates.sunPHMin;
+var sunPHRate = "sunPHRate : " + parkingRates.sunPHRate + "/" + sunPHMin;
 carparkRate.innerHTML = weekdayRate + satdayRate + sunPHRate;
