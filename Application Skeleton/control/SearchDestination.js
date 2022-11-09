@@ -46,7 +46,7 @@ $(document).ready(function () {
     var input = document.getElementById('destination_address');
     input.addEventListener("keydown", (event)=>{
         var key = event.key;
-        if( key === "Backspace" || key === "Delete" ){
+        if( key != null){
             destination = null;
         }
     });
