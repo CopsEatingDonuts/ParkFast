@@ -19,7 +19,6 @@
     <script type = "module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
         import { getDatabase, ref, onValue, remove } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
         const firebaseConfig = {       
             apiKey: "AIzaSyBWImFGqsTT5oRab27BVDjzlicbegDW9qM",
             authDomain: "parkfast-23bd8.firebaseapp.com",
@@ -32,7 +31,6 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
         const db = getDatabase(app);
         const userId = sessionStorage.getItem("userID");
         console.log(userId);
@@ -45,7 +43,7 @@
             onValue(dbRef, (snapshot) => {
             snapshot.forEach((childSnapshot) => {
                 count += 1;
-                parentData.push(childSnapshot.key);
+                parentData.unshift(childSnapshot.key);
                 const childData = childSnapshot.val();
                 const lat = childData.latitude;
                 const lng = childData.longitude;
@@ -99,17 +97,18 @@
                     }
                     console.log('Loop completed.')  
                     resolve(y)
-                }, 2000)
+                }, 1000)
             })
         }
 
-        async function setupRemoveButton(){
+        async function setupButtons(){
             console.log('Before promise call.')
             //3. Await for the first function to complete
             const result = await getLocation()
             console.log('Promise resolved: ' + result)
             console.log('Next step.')
             var removeCarparkButtons = document.getElementsByClassName("removeCarpark");
+            var navigateButtons = document.getElementsByClassName("material-symbols-outlined");
             for(var i=0; i < count; i++){
                 var button = removeCarparkButtons[i];
                 button.addEventListener('click', function(event){
@@ -123,22 +122,20 @@
                     });
 
                 });
-            }
-        }
 
-        setupRemoveButton();
-
-        var navigateButtons = document.getElementsByClassName("material-symbols-outlined");
-            for(var i=0; i < count; i++){
                 var directionButton = navigateButtons[i];
                 directionButton.addEventListener('click', function(event){
                     var directionButtonClicked = event.target;
                     var directionButtonID = event.srcElement.id;
                     console.log(directionButtonID);
+                    console.log(carparkAddress[directionButtonID-1]);
                     sessionStorage.setItem("selected_carpark_address", carparkAddress[directionButtonID-1]);
-                    window.location.href = "http://127.0.0.1:5500/boundary/DisplayCarparkAvailability.html";
+                    window.location.href = "DisplayCarparkAvailability.html";
                 });
             }
+        }
+
+        setupButtons();
     </script>
     <script src = "FavoriteCarparks.js"></script>
 </html>

@@ -65,7 +65,6 @@
         var pw2 = document.getElementById("pswd2").value; 
         var email = document.getElementById("username").value;
         if (validateForm(pw1, pw2, email)){
-            //window.open("http://127.0.0.1:5502/Screens/SearchDestination/SearchDestination.html", "_self");
             createUserWithEmailAndPassword(auth, email, pw1)
             .then((userCredential) => {
                 const user = userCredential.user;
