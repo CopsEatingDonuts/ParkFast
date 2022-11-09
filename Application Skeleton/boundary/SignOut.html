@@ -26,7 +26,7 @@
             e.preventDefault();
             signOut(auth).then(() => {
                 console.log("Signed out")
-                window.location.href = "http://127.0.0.1:5502/Application%20Skeleton/boundary/login.html"
+                window.location.href = "login.html"
             }).catch((error) => {
                 console.log("error: " + error)
             });

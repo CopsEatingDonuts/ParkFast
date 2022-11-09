@@ -95,7 +95,7 @@
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         signOut(auth).then(() => {
-                            window.location.href = "http://127.0.0.1:5502/Application%20Skeleton/boundary/login.html";
+                            window.location.href = "login.html";
                             alert("Signed out successfully");
                         }).catch((error) => {
                         console.log("error: " + error)
