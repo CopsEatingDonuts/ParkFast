@@ -43,6 +43,14 @@ $(document).ready(function () {
         sessionStorage.setItem("destination_lng", destination.geometry.location.lng());
     });
 
+    var input = document.getElementById('destination_address');
+    input.addEventListener("keydown", (event)=>{
+        var key = event.key;
+        if( key === "Backspace" || key === "Delete" ){
+            destination = null;
+        }
+    });
+
     var searchButton = document.getElementById("searchButton");
     searchButton.addEventListener("click", function(event){
         if(destination == null){
