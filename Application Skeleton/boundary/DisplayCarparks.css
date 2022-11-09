@@ -134,7 +134,7 @@ body {
     height: 30px;
     border-radius: 10px;
     border-style: none;
-    background:white;
-    margin-left: -40px;
+    background-color: transparent;
+    margin-left: -25px;
     display: none;
 }
