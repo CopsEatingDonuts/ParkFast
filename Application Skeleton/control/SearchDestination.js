@@ -1,21 +1,29 @@
-function passDestination(){
-    var destination_address = document.getElementById("destination_address").value;
-    sessionStorage.setItem("destination_address", destination_address);
-    return;
-}
-
 $(document).ready(function () {
- var autocomplete;
- autocomplete = new google.maps.places.Autocomplete((document.getElementById("destination_address")), {
-  componentRestrictions: {'country': ['SG']},
- });
+    var destination;
+    var autocomplete;
+    autocomplete = new google.maps.places.Autocomplete((document.getElementById("destination_address")), {
+        componentRestrictions: {'country': ['SG']},
+    });
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        destination = autocomplete.getPlace();
+        sessionStorage.setItem("destination_lat", destination.geometry.location.lat());
+        sessionStorage.setItem("destination_lng", destination.geometry.location.lng());
+    });
+
+    var searchButton = document.getElementById("searchButton");
+    searchButton.addEventListener("click", function(event){
+        if(destination == null){
+            alert("please choose a valid input");
+        }
+        else{
+            var destination_address = document.getElementById("destination_address").value;
+            console.log(destination_address);
+            sessionStorage.setItem("destination_address", destination_address);
+            window.location.href = "DisplayCarparks.html";
+        }
+    });
   
- google.maps.event.addListener(autocomplete, 'place_changed', function () {
-  var destination = autocomplete.getPlace();
-  //alert(destination.geometry.location.lat());
-  sessionStorage.setItem("destination_lat", destination.geometry.location.lat());
-  sessionStorage.setItem("destination_lng", destination.geometry.location.lng());
- });
 });
 
 document.getElementById("openButton").addEventListener("click", popUp);
