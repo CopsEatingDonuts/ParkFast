@@ -39,6 +39,7 @@
         var count = 0;
         const parentData = [];
         const carparkAddress = [];
+        const carparkCoordinates = [];
         function getLocation(){
             onValue(dbRef, (snapshot) => {
             snapshot.forEach((childSnapshot) => {
@@ -47,17 +48,24 @@
                 const childData = childSnapshot.val();
                 const lat = childData.latitude;
                 const lng = childData.longitude;
+                const lat_wgs84 = childData.latitude_wgs84;
+                const lng_wgs84 = childData.longitude_wgs84;
                 var carparkRow = document.createElement('div');
                 carparkRow.classList.add('location');
                 var carparkLocationAddress = document.createElement('span');
                 carparkLocationAddress.classList.add('carparkLocationAddress');
                 const latlng = {
-                lat: parseFloat(lat),
-                lng: parseFloat(lng),
+                    lat: parseFloat(lat),
+                    lng: parseFloat(lng)
                 };
+                const latlng_wgs84 = {
+                lat: parseFloat(lat_wgs84),
+                lng: parseFloat(lng_wgs84),
+                };
+                carparkCoordinates.push(latlng);
                 const geocoder = new google.maps.Geocoder();
                 geocoder
-                .geocode({ location: latlng })
+                .geocode({ location: latlng_wgs84 })
                 .then((response) => {
                     if (response.results[0]) {
                         carparkLocationAddress.innerHTML = response.results[0].formatted_address;
@@ -130,6 +138,8 @@
                     console.log(directionButtonID);
                     console.log(carparkAddress[directionButtonID-1]);
                     sessionStorage.setItem("selected_carpark_address", carparkAddress[directionButtonID-1]);
+                    sessionStorage.setItem("selected_lat", parseFloat(carparkCoordinates[directionButtonID-1].lat));
+                    sessionStorage.setItem("selected_lng", parseFloat(carparkCoordinates[directionButtonID-1].lng));
                     window.location.href = "DisplayCarparkAvailability.html";
                 });
             }

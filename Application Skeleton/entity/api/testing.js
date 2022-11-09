@@ -32,7 +32,11 @@ for (let i=0;i<carParkAvail.length;i++) {
     }
     if (carparkinfo.length==1) count_1++;
     else if (carparkinfo.length==2) count_2++;
-    else if (carparkinfo.length==3) count_3++;
+    else if (carparkinfo.length==3) {
+        count_3++;
+        console.log(carParkAvail[i].geometries[0]);
+        console.log(carParkAvail[i].Address);
+    }
     else count_4++;
 }
 console.log("Total : "+total);

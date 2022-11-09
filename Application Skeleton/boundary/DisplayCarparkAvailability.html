@@ -101,7 +101,9 @@
                     const newPostRef = push(postListRef);
                     set(newPostRef, {
                         latitude: selected_carpark_lat,
-                        longitude: selected_carpark_lng
+                        longitude: selected_carpark_lng,
+                        latitude_wgs84: selected_carpark_lat_wgs84,
+                        longitude_wgs84: selected_carpark_lng_wgs84
                     });
                     alert("added to favorites");
                 } else {
