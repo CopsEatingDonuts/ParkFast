@@ -1,6 +1,7 @@
-function setColor(btn1, btn2) {
+function setColor(btn1, btn2, btn3) {
     var property1 = document.getElementById(btn1);
     var property2 = document.getElementById(btn2);
+    var property3 = document.getElementById(btn3);
     property1.style.backgroundColor = "rgb(29, 155, 220)"
     property1.style.color = "white";
     property1.style.fontWeight = "bold";
@@ -9,6 +10,10 @@ function setColor(btn1, btn2) {
     property2.style.backgroundColor = "white"
     property2.style.color = "black"
     property2.style.fontWeight = "normal"
+    property3.style.opacity = 0.4
+    property3.style.backgroundColor = "white"
+    property3.style.color = "black"
+    property3.style.fontWeight = "normal"
 }
 
 var destination_address = sessionStorage.getItem("destination_address");

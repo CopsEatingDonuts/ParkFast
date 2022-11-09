@@ -57,6 +57,18 @@ body {
     opacity: 0.6;
 }
 
+#button3{
+    margin-left: 15px;
+    padding:2px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    width: 80px;
+    font-weight: "normal";
+    opacity: 0.6;
+}
+
 .material-symbols-outlined{
     background: rgb(34,220,34);
     border-radius: 10px;

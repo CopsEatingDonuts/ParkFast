@@ -21,8 +21,9 @@
         </div>
         
         <div class="button_label">
-            <button id = "button1" onclick="setColor('button1','button2')">Nearest</button>
-            <button id = "button2" onclick="setColor('button2','button1')">Price</button>
+            <button id = "button1" onclick="setColor('button1','button2', 'button3')">Nearest</button>
+            <button id = "button2" onclick="setColor('button2','button1', 'button3')">Availability</button>
+            <button id = "button3" onclick="setColor('button3','button1', 'button2')">Petrol</button>
         </div>
         
         <div class = "big-container">
@@ -97,14 +98,15 @@
         // Initialize Firebase
         const app1 = initializeApp(firebaseConfig1);
         const dbRef = ref(getDatabase(app1));
+        var carParkAvail;
         // read database
         get(dbRef).then((snapshot) => {
         if (snapshot.exists()) {
             //snapshot.val() is the database
-            var carParkAvail = snapshot.val();
+            carParkAvail = snapshot.val();
             //console.log(typeof(carParkAvail.Result));
-            var carParkAvail = sortCarParkAvail(carParkAvail.Result, destination_lat, destination_lng);
             sessionStorage.setItem("dataset", JSON.stringify(carParkAvail));
+            carParkAvail = sortCarParkAvail(carParkAvail.Result, destination_lat, destination_lng);
             document.getElementById("parking_location_1").innerHTML = carParkAvail[0].Address;
             document.getElementById("parking_location_2").innerHTML = carParkAvail[1].Address;
             document.getElementById("parking_location_3").innerHTML = carParkAvail[2].Address;
@@ -118,7 +120,46 @@
         console.error(error);
         });
 
-                
+        document.getElementById("button1").addEventListener("click", showNearest);
+        document.getElementById("button2").addEventListener("click", showAvailability);
+        //document.getElementById("button3").addEventListener("click", showPetrol);
+
+        function showNearest(){
+            carParkAvail = sortCarParkAvail(carParkAvail, destination_lat, destination_lng);
+            document.getElementById("parking_location_1").innerHTML = carParkAvail[0].Address;
+            document.getElementById("parking_location_2").innerHTML = carParkAvail[1].Address;
+            document.getElementById("parking_location_3").innerHTML = carParkAvail[2].Address;
+            document.getElementById("parking_location_4").innerHTML = carParkAvail[3].Address;
+            document.getElementById("parking_location_5").innerHTML = carParkAvail[4].Address;
+            return;
+        }
+
+        function available_lots(a, b) {
+            try {
+                var lots_a = a.carpark_info[0].lots_available;
+                var lots_b = b.carpark_info[0].lots_available;
+            }
+            catch(err) {return 0;}
+            
+            return lots_a - lots_b;
+        }
+
+        function sortAvails(dataset) {
+            dataset.sort(available_lots);
+            return dataset;
+        }
+
+        function showAvailability(){
+            var top5_nearest = (sortCarParkAvail(carParkAvail, destination_lat, destination_lng)).slice(0,5);
+            var sorted_avail_carparks = sortAvails(top5_nearest);
+            document.getElementById("parking_location_1").innerHTML = sorted_avail_carparks[0].Address;
+            document.getElementById("parking_location_2").innerHTML = sorted_avail_carparks[1].Address;
+            document.getElementById("parking_location_3").innerHTML = sorted_avail_carparks[2].Address;
+            document.getElementById("parking_location_4").innerHTML = sorted_avail_carparks[3].Address;
+            document.getElementById("parking_location_5").innerHTML = sorted_avail_carparks[4].Address;
+            return;
+        }
+
         function distance(lat1, lat2, lon1, lon2)
         {
             // The math module contains a function
