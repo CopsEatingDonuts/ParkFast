@@ -21,6 +21,9 @@ a webapp to enhance parking experience of drivers
 
 # Contributors:
 @CopsEatingDonuts - Backend API implmentation and data wrangling
+
 @yankailim - Backend logical functions
+
 @serphyshio - Frontend and database implementation
+
 @Player999058 - Frontend and logical functions
