@@ -242,3 +242,10 @@ document.getElementById("proceedButton").addEventListener("click", navigate);
 function navigate(){
   window.location.href = "https://www.google.com/maps/search/?api=1&query="+formattedAddress;
 }
+
+var carparkRate = document.getElementById("carParkRate");
+var parkingRates = selected_carpark.parkingRate[0];
+var satdayRate = "satdayRate : " + parkingRates.satdayRate + " || ";
+var sunPHRate = "sunPHRate : " + parkingRates.sunPHRate + " || ";
+var weekdayRate = "weekdayRate : " + parkingRates.weekdayRate + " || ";
+carparkRate.innerHTML = JSON.stringify(weekdayRate + satdayRate + sunPHRate);
