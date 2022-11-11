@@ -54,7 +54,7 @@ $(document).ready(function () {
     var searchButton = document.getElementById("searchButton");
     searchButton.addEventListener("click", function(event){
         if(destination == null){
-            alert("please choose a valid input");
+            alert("Please choose a valid input");
         }
         else{
             var destination_address = document.getElementById("destination_address").value;
