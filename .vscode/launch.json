@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open SearchDestination.html",
-            "file": "c:\\Users\\yanka\\Documents\\ParkFast\\Application Skeleton\\boundary\\SearchDestination.html"
+            "file": "c:\\Users\\yanka\\Documents\\ParkFast\\Application Source Code\\boundary\\SearchDestination.html"
         }
     ]
 }
